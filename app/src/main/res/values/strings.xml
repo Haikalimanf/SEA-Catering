@@ -3,4 +3,25 @@
     <string name="title_home">Home</string>
     <string name="title_menu">Menu</string>
     <string name="title_subscription">Subscription</string>
+
+    // Text Komponen
+    <string name="next">Next</string>
+    <string name="finish">Finish</string>
+
+    // Opening String
+    <string name="title_splash_screen">SEA Catering</string>
+    <string name="slogan">Healthy Meals, Anytime, Anywhere</string>
+    <string name="title_onboarding_screen_1">Customize Your Meals</string>
+    <string name="desc_onboarding_screen_1">Choose your favorite proteins, carbs, and veggies. We\'ll prepare the healthy meal you truly want.</string>
+    <string name="title_onboarding_screen_2">Delivered to Your Doorstep</string>
+    <string name="desc_onboarding_screen_2">Enjoy convenient delivery to major cities across Indonesia, right to your home or office.</string>
+    <string name="title_onboarding_screen_3">Know Your Nutrition</string>
+    <string name="desc_onboarding_screen_3">Every meal comes with clear calorie and nutritional info to help you achieve your health goals.</string>
+
+    // App Bar
+    <string name="contact_us">Contact Us</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="Profile">Profile</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

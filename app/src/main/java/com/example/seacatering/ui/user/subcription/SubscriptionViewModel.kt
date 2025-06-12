@@ -1,13 +1,13 @@
-package com.example.seacatering.ui.home
+package com.example.seacatering.ui.user.subcription
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class HomeViewModel : ViewModel() {
+class SubscriptionViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+        value = "This is notifications Fragment"
     }
     val text: LiveData<String> = _text
 }

@@ -1,13 +1,13 @@
-package com.example.seacatering.ui.subcription
+package com.example.seacatering.ui.user.menu
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class SubscriptionViewModel : ViewModel() {
+class MenuViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is notifications Fragment"
+        value = "This is dashboard Fragment"
     }
     val text: LiveData<String> = _text
 }

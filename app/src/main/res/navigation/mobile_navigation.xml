@@ -7,19 +7,37 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.seacatering.ui.home.HomeFragment"
+        android:name="com.example.seacatering.ui.user.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_menu"
-        android:name="com.example.seacatering.ui.menu.MenuFragment"
+        android:name="com.example.seacatering.ui.user.menu.MenuFragment"
         android:label="@string/title_menu"
         tools:layout="@layout/fragment_menu" />
 
     <fragment
         android:id="@+id/navigation_subscription"
-        android:name="com.example.seacatering.ui.subcription.SubscriptionFragment"
+        android:name="com.example.seacatering.ui.user.subcription.SubscriptionFragment"
         android:label="@string/title_subscription"
         tools:layout="@layout/fragment_subcription" />
+
+    <activity
+        android:id="@+id/navigation_contactUs"
+        android:name="com.example.seacatering.ui.user.contact.ContactUsActivity"
+        android:label="activity_contact_us"
+        tools:layout="@layout/activity_contact_us" />
+
+    <activity
+        android:id="@+id/navigation_profile"
+        android:name="com.example.seacatering.ui.user.profile.ProfileActivity"
+        android:label="activity_profile"
+        tools:layout="@layout/activity_profile" />
+    <activity
+        android:id="@+id/navigation_dashboard"
+        android:name="com.example.seacatering.ui.user.dashboard.DashboardActivity"
+        android:label="activity_dashboard"
+        tools:layout="@layout/activity_dashboard" />
+
 </navigation>

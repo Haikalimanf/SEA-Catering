@@ -16,6 +16,8 @@ glide = "4.16.0"
 hiltAndroid = "2.56.2"
 kotlinxCoroutinesAndroid = "1.10.1"
 roomRuntime = "2.7.1"
+activity = "1.10.1"
+lottie = "6.6.6"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -36,6 +38,8 @@ hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", ve
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroid" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomRuntime" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
+androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
