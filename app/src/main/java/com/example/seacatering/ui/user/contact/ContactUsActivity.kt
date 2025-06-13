@@ -20,7 +20,8 @@ class ContactUsActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
+        val pageTitle = getString(R.string.contact_us)
+        supportActionBar?.title = pageTitle
     }
 
     override fun onSupportNavigateUp(): Boolean {

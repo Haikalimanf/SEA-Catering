@@ -3,8 +3,8 @@
     android:shape="rectangle">
 
     <!-- Warna background button -->
-    <solid android:color="@color/green" />
+    <solid android:color="@color/red" />
 
     <!-- Radius sudut -->
-    <corners android:radius="16dp" />
+    <corners android:radius="10dp" />
 </shape>

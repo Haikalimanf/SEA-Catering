@@ -1,10 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center|top"
+    android:padding="24dp"
     tools:context=".ui.user.dashboard.DashboardActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_bold"
+        android:text="@string/greeting"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="@android:color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:scaleType="centerCrop"
+                tools:src="@tools:sample/avatars"
+                android:layout_marginBottom="12dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:text="@string/title_card_dashboard"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:layout_marginBottom="8dp" />
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/package_name"
+                        android:fontFamily="@font/poppins"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:text="@string/titik_dua"
+                        android:fontFamily="@font/poppins"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        />
+                    <TextView
+                        android:id="@+id/txt_package_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                    />
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:text="@string/subscription_status"
+                        android:fontFamily="@font/poppins"
+                        android:textStyle="bold"
+                    />
+                    <TextView
+                        android:text="@string/titik_dua"
+                        android:fontFamily="@font/poppins"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                    />
+                    <TextView
+                        android:id="@+id/txt_subscription_status"
+                        android:fontFamily="@font/poppins"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                    />
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:text="@string/meal_types"
+                        android:fontFamily="@font/poppins"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:text="@string/titik_dua"
+                        android:fontFamily="@font/poppins"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                    />
+                    <TextView
+                        android:id="@+id/txt_meal_type"
+                        android:fontFamily="@font/poppins"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                    />
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:text="@string/delivery_days"
+                        android:fontFamily="@font/poppins"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:text="@string/titik_dua"
+                        android:fontFamily="@font/poppins"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        />
+                    <TextView
+                        android:id="@+id/txt_delivery_days"
+                        android:fontFamily="@font/poppins"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        />
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:text="@string/total_price"
+                        android:fontFamily="@font/poppins"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:text="@string/titik_dua"
+                        android:fontFamily="@font/poppins"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        />
+                    <TextView
+                        android:id="@+id/txt_total_price"
+                        android:fontFamily="@font/poppins"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        />
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:text="@string/next_renewal_date"
+                        android:fontFamily="@font/poppins"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:text="@string/titik_dua"
+                        android:fontFamily="@font/poppins"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                    />
+                    <TextView
+                        android:id="@+id/txt_next_renewal_date"
+                        android:fontFamily="@font/poppins"
+                        android:paddingStart="8dp" />
+                </TableRow>
+            </TableLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_pause"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="@color/gray"
+        android:textColor="@android:color/white"
+        android:text="Pause Subcription" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_cancel_subscription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_rounded"
+        android:text="Cancel Subsciption"
+        android:textColor="@android:color/white"
+    />
+
+
+</LinearLayout>

@@ -21,7 +21,59 @@
     // App Bar
     <string name="contact_us">Contact Us</string>
     <string name="dashboard">Dashboard</string>
-    <string name="Profile">Profile</string>
+    <string name="profile">Profile</string>
+    <string name="review">Add Review</string>
+
+    // Login and register
+    <string name="title_login">Login to your Account</string>
+    <string name="email">Email</string>
+    <string name="hint_email">Input your email</string>
+    <string name="password">Password</string>
+    <string name="hint_password">Input your password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="chosee_sign_in_with">Or Sign in WIth</string>
+    <string name="don_t_have_an_account_sign_up">Don’t have an account? Sign Up</string>
+    <string name="title_register">Create your Account</string>
+    <string name="username">Username</string>
+    <string name="hint_username">Input your username</string>
+
+    // Profile
+    <string name="address">Address</string>
+    <string name="hint_address">Input yout Address</string>
+    <string name="save">Save</string>
+    <string name="log_out">Log Out</string>
+
+    // Dashboard
+    <string name="greeting">Hello, %s</string>
+    <string name="title_card_dashboard">Your Subscription</string>
+    <string name="package_name">Package Name</string>
+    <string name="subscription_status">Subscription Status</string>
+    <string name="meal_types">Meal Types</string>
+    <string name="delivery_days">Delivery Days</string>
+    <string name="titik_dua">:</string>
+    <string name="total_price">Total Price</string>
+    <string name="next_renewal_date">Next Renewal Date</string>
+    <string name="title_bottom_sheet">Want to pause your subscription?</string>
+    <string name="desc_bottom_sheet">Select the date range during which you do not want to receive deliveries.</string>
+    <string name="select_date">Select Date</string>
+    <string name="confirm_pause">Confirm Pause</string>
+
+    // Contact Us
+    <string name="contact_via_whatsapp">Contact via WhatsApp</string>
+    <string name="call_contact">Call Contact</string>
+    <string name="number_brian">08123456789</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="brian_manager">Brian (Manager)</string>
+    <string name="desc_contact_us">Get in touch if you have any questions about your order or our service.</string>
+    <string name="title_contact_us">We\'re here to help</string>
+
+    //Home
+    <string name="add_review">Add Review</string>
+
+    // String
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+
 </resources>

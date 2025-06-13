@@ -21,6 +21,8 @@ class ProfileActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        val pageTitle = getString(R.string.profile)
+        supportActionBar?.title = pageTitle
     }
 
     override fun onSupportNavigateUp(): Boolean {

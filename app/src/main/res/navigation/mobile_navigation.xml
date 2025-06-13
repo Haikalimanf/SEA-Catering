@@ -26,18 +26,18 @@
     <activity
         android:id="@+id/navigation_contactUs"
         android:name="com.example.seacatering.ui.user.contact.ContactUsActivity"
-        android:label="activity_contact_us"
+        android:label="@string/contact_us"
         tools:layout="@layout/activity_contact_us" />
 
     <activity
         android:id="@+id/navigation_profile"
         android:name="com.example.seacatering.ui.user.profile.ProfileActivity"
-        android:label="activity_profile"
+        android:label="@string/profile"
         tools:layout="@layout/activity_profile" />
     <activity
         android:id="@+id/navigation_dashboard"
         android:name="com.example.seacatering.ui.user.dashboard.DashboardActivity"
-        android:label="activity_dashboard"
+        android:label="@string/dashboard"
         tools:layout="@layout/activity_dashboard" />
 
 </navigation>
