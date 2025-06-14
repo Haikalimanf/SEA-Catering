@@ -21,7 +21,7 @@
         android:id="@+id/navigation_subscription"
         android:name="com.example.seacatering.ui.user.subcription.SubscriptionFragment"
         android:label="@string/title_subscription"
-        tools:layout="@layout/fragment_subcription" />
+        tools:layout="@layout/fragment_subscription" />
 
     <activity
         android:id="@+id/navigation_contactUs"

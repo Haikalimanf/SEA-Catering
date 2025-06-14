@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Share your experience with us!"
+        android:text="@string/title_page_review"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:fontFamily="@font/poppins_bold"
@@ -20,7 +20,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Your feedback helps us to improve our service."
+        android:text="@string/desc_page_review"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:fontFamily="@font/poppins"
@@ -30,7 +30,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Rating (4/5)"
+        android:text="@string/rating_4_5"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:fontFamily="@font/poppins"
@@ -53,7 +53,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Review"
+        android:text="@string/review"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:fontFamily="@font/poppins"
@@ -64,7 +64,7 @@
         android:layout_width="match_parent"
         android:layout_height="81dp"
         android:background="@drawable/edit_text_border"
-        android:hint="Share your experience in here!"
+        android:hint="@string/hint_review"
         android:textColorHint="@color/gray"
         android:paddingStart="15dp"
         android:paddingEnd="16dp"
@@ -86,7 +86,7 @@
         android:background="@drawable/button_rounded"
         android:backgroundTint="@color/green"
         android:textColor="@android:color/white"
-        android:text="Post" />
+        android:text="@string/post" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_cancel"
@@ -94,7 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@drawable/button_rounded"
-        android:text="Cancel"
+        android:text="@string/cancel"
         android:textColor="@android:color/white"
     />
 

@@ -36,6 +36,14 @@
     <string name="title_register">Create your Account</string>
     <string name="username">Username</string>
     <string name="hint_username">Input your username</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="or_sign_up_with">Or Sign Up WIth</string>
+    <string name="don_t_have_an_account_sign_in">Don’t have an account? Sign In</string>
+    <string name="facebook_logo">Facebook Logo</string>
+    <string name="google_logo">Google Logo</string>
+    <string name="apple_logo">Apple logo</string>
+    <string name="logo_sea_catering">Logo Sea Catering</string>
+
 
     // Profile
     <string name="address">Address</string>
@@ -70,10 +78,44 @@
     //Home
     <string name="add_review">Add Review</string>
 
+    // Subcription
+    <string name="title_page_subcription">Build Your Subscription Plan</string>
+    <string name="desc_page_subscription">Customize your weekly meals in a few simple steps.</string>
+    <string name="choose_your_package_meal">Choose your package, meal types, and delivery days.</string>
+    <string name="diet_plan">Diet Plan</string>
+    <string name="rp30_000">Rp30.000/meal</string>
+    <string name="protein_plan">Protein Plan</string>
+    <string name="rp40_000">Rp40.000/meal</string>
+    <string name="royal_plan">Royal Plan</string>
+    <string name="rp50_000">Rp50.000/meal</string>
+    <string name="meal_plan">Meal Plan</string>
+    <string name="breakfest">Breakfest</string>
+    <string name="launch">Launch</string>
+    <string name="dinner">Dinner</string>
+    <string name="monday">Monday</string>
+    <string name="friday">Friday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="saturday">Saturday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="sunday">Sunday</string>
+    <string name="thursday">Thursday</string>
+    <string name="let_us_know_about_any_allergies">Let us know about any allergies or special requests.</string>
+    <string name="hint_allergies">I’m allergies with…</string>
+    <string name="note_fields_marked">Note: Fields marked with (*) If you not have allergies</string>
+    <string name="subcribe_now">Subcribe Now</string>
+
+    // Review
+    <string name="title_page_review">Share your experience with us!</string>
+    <string name="desc_page_review">Your feedback helps us to improve our service.</string>
+    <string name="rating_4_5">Rating (4/5)</string>
+    <string name="hint_review">Share your experience in here!</string>
+    <string name="post">Post</string>
+    <string name="cancel">Cancel</string>
+
     // String
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string name="logo_calender">logo_calender</string>
 
 
 </resources>

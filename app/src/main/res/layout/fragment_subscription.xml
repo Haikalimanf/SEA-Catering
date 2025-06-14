@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.user.subcription.SubscriptionFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+    >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/title_page_subcription"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="@string/desc_page_subscription"
+            android:textColor="@color/black"
+            android:textSize="19sp"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins"
+            android:text="@string/username"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/edt_email"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:background="@drawable/edit_text_border"
+            android:hint="@string/hint_username"
+            android:textColorHint="@color/gray"
+            android:paddingStart="15dp"
+            android:autofillHints="username"
+            android:paddingEnd="16dp"
+            android:fontFamily="@font/poppins"
+            android:textSize="14sp"
+            android:inputType="textEmailAddress"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins"
+            android:text="@string/phone_number"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/edt_phoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:background="@drawable/edit_text_border"
+            android:hint="@string/phone_number"
+            android:textColorHint="@color/gray"
+            android:paddingStart="15dp"
+            android:autofillHints="phone"
+            android:paddingEnd="16dp"
+            android:fontFamily="@font/poppins"
+            android:textSize="14sp"
+            android:inputType="phone"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="@string/choose_your_package_meal"
+            android:textColor="@color/green"
+            android:textSize="17sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="@string/phone_number"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <RadioGroup
+            android:id="@+id/planRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Diet Plan -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/tvPlanDiet"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/diet_plan"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/poppins"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/rbPlan1"
+                        app:layout_constraintHorizontal_bias="0" />
+
+                    <TextView
+                        android:id="@+id/tvPriceDiet"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/rp30_000"
+                        android:textColor="@color/green"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/poppins"
+                        app:layout_constraintTop_toBottomOf="@id/tvPlanDiet"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/rbPlan1" />
+
+                    <RadioButton
+                        android:id="@+id/rbPlan1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Protein Plan -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/tvPlanProtein"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/protein_plan"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/poppins"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/rbPlan2" />
+
+                    <TextView
+                        android:id="@+id/tvPriceProtein"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/rp40_000"
+                        android:textColor="@color/green"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/poppins"
+                        app:layout_constraintTop_toBottomOf="@id/tvPlanProtein"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/rbPlan2" />
+
+                    <RadioButton
+                        android:id="@+id/rbPlan2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Royal Plan -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/tvPlanRoyal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/royal_plan"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/poppins"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/rbPlan3" />
+
+                    <TextView
+                        android:id="@+id/tvPriceRoyal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/rp50_000"
+                        android:textColor="@color/green"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/poppins"
+                        app:layout_constraintTop_toBottomOf="@id/tvPlanRoyal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/rbPlan3" />
+
+                    <RadioButton
+                        android:id="@+id/rbPlan3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="@string/meal_plan"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/breakfest"
+            android:textSize="16sp"
+            android:fontFamily="@font/poppins"
+        />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/launch"
+            android:textSize="16sp"
+            android:fontFamily="@font/poppins"
+        />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dinner"
+            android:textSize="16sp"
+            android:fontFamily="@font/poppins"
+        />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="@string/delivery_days"
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"
+            android:textSize="18sp" />
+
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="0,1"
+        >
+
+            <TableRow>
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/monday"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins"
+                />
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/friday"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins"
+                />
+            </TableRow>
+
+            <TableRow>
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tuesday"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins"
+                    />
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/saturday"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins"
+                    />
+            </TableRow>
+
+            <TableRow>
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/wednesday"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins"
+                    />
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sunday"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins"
+                    />
+            </TableRow>
+
+            <TableRow>
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/thursday"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins"
+                    />
+            </TableRow>
+
+        </TableLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="@string/let_us_know_about_any_allergies"
+            android:textColor="@color/green"
+            android:textSize="17sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="8dp"
+        />
+
+        <EditText
+            android:id="@+id/edt_allergies"
+            android:layout_width="match_parent"
+            android:layout_height="81dp"
+            android:background="@drawable/edit_text_border"
+            android:hint="@string/hint_allergies"
+            android:textColorHint="@color/gray"
+            android:paddingStart="15dp"
+            android:paddingEnd="16dp"
+            android:autofillHints=""
+            android:paddingBottom="25dp"
+            android:fontFamily="@font/poppins"
+            android:textSize="14sp"
+            android:inputType="textMultiLine"
+            android:singleLine="false"
+            android:maxLines="4"
+            android:lines="3"
+            android:scrollHorizontally="false"
+        />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="@string/note_fields_marked"
+            android:textColor="@color/gray"
+            android:textSize="12sp"
+            android:layout_marginBottom="8dp"
+        />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_rounded"
+            android:backgroundTint="@color/green"
+            android:layout_marginBottom="40dp"
+            android:text="@string/subcribe_now" />
+
+
+    </LinearLayout>
+
+</ScrollView>

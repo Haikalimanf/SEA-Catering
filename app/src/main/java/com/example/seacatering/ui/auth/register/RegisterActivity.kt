@@ -55,9 +55,9 @@ class RegisterActivity : AppCompatActivity() {
 
         spannable.setSpan(clickableSpan, startIndex, endIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
 
-        binding.tvSignUp.text = spannable
-        binding.tvSignUp.movementMethod = LinkMovementMethod.getInstance()
-        binding.tvSignUp.highlightColor = android.graphics.Color.TRANSPARENT
+        binding.tvSignIn.text = spannable
+        binding.tvSignIn.movementMethod = LinkMovementMethod.getInstance()
+        binding.tvSignIn.highlightColor = android.graphics.Color.TRANSPARENT
 
     }
 }
