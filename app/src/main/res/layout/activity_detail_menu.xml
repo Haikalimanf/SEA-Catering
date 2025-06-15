@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    tools:context=".ui.user.menu.DetailMenuActivity">
+
+    <ImageView
+        android:id="@+id/img_diet_plan"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:scaleType="centerCrop"
+        tools:src="@tools:sample/avatars"
+        android:contentDescription="Diet Plan Image" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Title Menu"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppins_bold"
+    />
+
+    <TextView
+        android:id="@+id/desc_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Desc Menu"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:fontFamily="@font/poppins"
+        android:layout_marginBottom="16dp"
+        android:justificationMode="inter_word" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="What You Get?"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppins_bold"
+        />
+
+    <TextView
+        android:id="@+id/tv_desc_you_will_get"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Desc You Will get"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:fontFamily="@font/poppins"
+        android:layout_marginBottom="16dp"
+        android:justificationMode="inter_word" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Weekly Menu"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppins_bold"
+        />
+
+    <TextView
+        android:id="@+id/tv_desc_menu_on_weekly"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Desc You Will get"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:fontFamily="@font/poppins"
+        android:layout_marginBottom="16dp"
+        android:justificationMode="inter_word" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Average Nutritional Information"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppins_bold"
+        />
+
+    <TextView
+        android:id="@+id/tv_desc_nutrional"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Desc nutrional"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:fontFamily="@font/poppins"
+        android:layout_marginBottom="16dp"
+        android:justificationMode="inter_word" />
+
+    
+</LinearLayout>

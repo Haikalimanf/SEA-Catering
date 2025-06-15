@@ -23,6 +23,7 @@
     <string name="dashboard">Dashboard</string>
     <string name="profile">Profile</string>
     <string name="review">Add Review</string>
+    <string name="detail_menu">Detail Menu</string>
 
     // Login and register
     <string name="title_login">Login to your Account</string>
