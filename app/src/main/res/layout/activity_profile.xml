@@ -22,10 +22,13 @@
                 android:id="@+id/img_profile"
                 android:layout_width="133dp"
                 android:layout_height="133dp"
-                android:scaleType="centerCrop"
-                tools:src="@tools:sample/avatars"
                 android:background="@drawable/circle_background_image"
-                android:clipToOutline="true" />
+                android:scaleType="centerCrop"
+                android:clipToOutline="true"
+                android:outlineProvider="background"
+                tools:src="@tools:sample/avatars"
+            />
+
 
             <ImageView
                 android:id="@+id/btn_change_photo"
