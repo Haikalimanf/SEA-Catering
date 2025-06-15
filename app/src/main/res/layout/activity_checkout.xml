@@ -1,10 +1,193 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.user.checkout.CheckoutActivity">
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@android:color/white"
+    android:gravity="center_horizontal">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Title -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your Subscription Plan"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:fontFamily="@font/poppins_bold"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Card Border with content -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@drawable/border_rounded_gray"
+        android:elevation="2dp">
+
+        <!-- Username -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Username"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jhon Doe"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins" />
+        </LinearLayout>
+
+        <!-- Phone Number -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Phone Number"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="08912124342"
+                android:textColor="@color/gray"
+                android:fontFamily="@font/poppins" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray"
+            android:layout_marginVertical="8dp" />
+
+        <!-- Plan Selection -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Plan Selection"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Protein Plan"
+                android:textColor="@color/gray"
+                android:fontFamily="@font/poppins" />
+        </LinearLayout>
+
+        <!-- Meal Type -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Meal Type"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Only Breakfast"
+                android:textColor="@color/gray"
+                android:fontFamily="@font/poppins" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray"
+            android:layout_marginVertical="8dp" />
+
+        <!-- Delivery Days -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delivery Days"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sunday, Tuesday"
+            android:textColor="@color/gray"
+            android:fontFamily="@font/poppins"
+            android:layout_marginBottom="8dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray"
+            android:layout_marginVertical="8dp" />
+
+        <!-- Allergies -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Allergies"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="I have a Sigma"
+            android:textColor="@color/gray"
+            android:fontFamily="@font/poppins" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_checkout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Checkout"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@color/green"
+        android:fontFamily="@font/poppins_bold"
+        android:background="@drawable/button_rounded" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Cancel"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/poppins_bold"
+        android:backgroundTint="@color/red"
+        android:background="@drawable/button_rounded" />
+</LinearLayout>

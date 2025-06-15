@@ -3,40 +3,53 @@ package com.example.seacatering.utils
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Context
+import android.widget.Toast
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 
 object DateTimePickerUtil {
-    fun showDateTimePicker(context: Context, onDateTimeSelected: (String) -> Unit) {
-        val calender = Calendar.getInstance()
 
-        val datePicker = DatePickerDialog(
+    fun showDateRangePicker(context: Context, onRangeSelected: (startDate: String, endDate: String) -> Unit) {
+        val calendar = Calendar.getInstance()
+        val formatter = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+
+        DatePickerDialog(
             context,
-            { _, year, month, dayOfMonth ->
-                val selectedDate = Calendar.getInstance()
-                selectedDate.set(year, month, dayOfMonth)
+            { _, startYear, startMonth, startDayOfMonth ->
+                val startCal = Calendar.getInstance().apply {
+                    set(startYear, startMonth, startDayOfMonth)
+                }
 
-                // Setelah pilih tanggal, lanjut ke time picker
-                TimePickerDialog(
+                DatePickerDialog(
                     context,
-                    { _, hourOfDay, minute ->
-                        selectedDate.set(Calendar.HOUR_OF_DAY, hourOfDay)
-                        selectedDate.set(Calendar.MINUTE, minute)
+                    { _, endYear, endMonth, endDayOfMonth ->
+                        val endCal = Calendar.getInstance().apply {
+                            set(endYear, endMonth, endDayOfMonth)
+                        }
 
-                        val format = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
-                        val formatted = format.format(selectedDate.time)
-                        onDateTimeSelected(formatted)
+                        // Validasi agar endDate tidak sebelum startDate
+                        if (endCal.before(startCal)) {
+                            Toast.makeText(context, "End date cannot be before start date", Toast.LENGTH_SHORT).show()
+                        } else {
+                            val startDateStr = formatter.format(startCal.time)
+                            val endDateStr = formatter.format(endCal.time)
+                            onRangeSelected(startDateStr, endDateStr)
+                        }
                     },
-                    calender.get(Calendar.HOUR_OF_DAY),
-                    calender.get(Calendar.MINUTE),
-                    true
-                ).show()
+                    startCal.get(Calendar.YEAR),
+                    startCal.get(Calendar.MONTH),
+                    startCal.get(Calendar.DAY_OF_MONTH)
+                ).apply {
+                    datePicker.minDate = startCal.timeInMillis // batas minimal: tanggal mulai
+                }.show()
+
             },
-            calender.get(Calendar.YEAR),
-            calender.get(Calendar.MONTH),
-            calender.get(Calendar.DAY_OF_MONTH)
-        )
-        datePicker.show()
+            calendar.get(Calendar.YEAR),
+            calendar.get(Calendar.MONTH),
+            calendar.get(Calendar.DAY_OF_MONTH)
+        ).show()
     }
 }
+
+

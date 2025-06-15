@@ -260,6 +260,7 @@
             android:textSize="18sp" />
 
         <CheckBox
+            android:id="@+id/cb_Breakfest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/breakfest"
@@ -268,6 +269,7 @@
         />
 
         <CheckBox
+            android:id="@+id/cb_Launch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/launch"
@@ -276,6 +278,7 @@
         />
 
         <CheckBox
+            android:id="@+id/cb_Dinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/dinner"
@@ -301,6 +304,7 @@
 
             <TableRow>
                 <CheckBox
+                    android:id="@+id/cb_Monday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/monday"
@@ -308,6 +312,7 @@
                     android:fontFamily="@font/poppins"
                 />
                 <CheckBox
+                    android:id="@+id/cb_Friday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/friday"
@@ -318,6 +323,7 @@
 
             <TableRow>
                 <CheckBox
+                    android:id="@+id/cb_Tuesday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/tuesday"
@@ -325,6 +331,7 @@
                     android:fontFamily="@font/poppins"
                     />
                 <CheckBox
+                    android:id="@+id/cb_Saturday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/saturday"
@@ -335,6 +342,7 @@
 
             <TableRow>
                 <CheckBox
+                    android:id="@+id/cb_Wednesday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/wednesday"
@@ -342,6 +350,7 @@
                     android:fontFamily="@font/poppins"
                     />
                 <CheckBox
+                    android:id="@+id/cb_Sunday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/sunday"
@@ -352,6 +361,7 @@
 
             <TableRow>
                 <CheckBox
+                    android:id="@+id/cb_Thursday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/thursday"
@@ -404,6 +414,7 @@
         />
 
         <Button
+            android:id="@+id/btn_Subcribe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"

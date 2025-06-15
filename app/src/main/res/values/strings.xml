@@ -24,6 +24,8 @@
     <string name="profile">Profile</string>
     <string name="review">Add Review</string>
     <string name="detail_menu">Detail Menu</string>
+    <string name="detail_Home">Detail Home</string>
+    <string name="checkout">Checkout</string>
 
     // Login and register
     <string name="title_login">Login to your Account</string>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="156dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    card_view:cardCornerRadius="16dp"
+    card_view:cardElevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/img_diet_plan"
+            android:layout_width="156dp"
+            android:layout_height="156dp"
+            android:scaleType="centerCrop"
+            tools:src="@tools:sample/avatars"
+            android:contentDescription="Diet Plan Image" />
+
+        <TextView
+            android:id="@+id/tvTitleMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/meal_plan"
+            android:paddingTop="8dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+        />
+
+        <TextView
+            android:id="@+id/tvDescMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:padding="8dp"
+            android:text="@string/let_us_know_about_any_allergies"
+            android:textColor="@color/green"
+            android:textSize="14sp"
+        />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
