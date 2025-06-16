@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import com.example.seacatering.R
 import com.example.seacatering.databinding.FragmentThirdScreenBinding
 import com.example.seacatering.ui.MainActivity
+import com.example.seacatering.ui.auth.login.LoginActivity
 
 
 class ThirdScreen : Fragment() {
@@ -24,7 +25,7 @@ class ThirdScreen : Fragment() {
 
 
         binding.btnFinish.setOnClickListener {
-            val intent = Intent(activity, MainActivity::class.java)
+            val intent = Intent(activity, LoginActivity::class.java)
             startActivity(intent)
             activity?.finish()
         }
