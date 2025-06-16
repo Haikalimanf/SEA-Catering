@@ -62,4 +62,9 @@ class LoginActivity : AppCompatActivity() {
         binding.tvSignUp.highlightColor = android.graphics.Color.TRANSPARENT
 
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }

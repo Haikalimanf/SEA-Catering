@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/select_date_range"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginBottom="8dp" />
+
+        <AutoCompleteTextView
+            android:id="@+id/dateRangeSelector"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/last_30_days"
+            android:drawableEnd="@drawable/ic_arrow_drop_down"
+            android:padding="12dp"
+            android:background="@drawable/edit_text_border"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:inputType="none"
+            android:focusable="false"
+            android:fontFamily="@font/poppins" />
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="2"
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="12dp"
+            android:columnOrderPreserved="false"
+            android:alignmentMode="alignMargins"
+            android:rowOrderPreserved="false"
+            android:useDefaultMargins="true">
+
+            <!-- Card 1 -->
+            <LinearLayout
+                style="@style/StatCard"
+                android:backgroundTint="@android:color/white">
+
+                <TextView
+                    style="@style/StatTitle"
+                    android:text="@string/new_subscriptions" />
+
+                <TextView
+                    style="@style/StatValue"
+                    android:text="1,234" />
+
+                <TextView
+                    style="@style/StatChangePositive"
+                    android:text="+12%" />
+            </LinearLayout>
+
+            <!-- Card 2 -->
+            <LinearLayout
+                style="@style/StatCard"
+                android:backgroundTint="@android:color/white">
+
+                <TextView
+                    style="@style/StatTitle"
+                    android:text="@string/total_revenue" />
+
+                <TextView
+                    style="@style/StatValue"
+                    android:text="$56,789" />
+
+                <TextView
+                    style="@style/StatChangePositive"
+                    android:text="+8%" />
+            </LinearLayout>
+
+            <!-- Card 3 -->
+            <LinearLayout
+                style="@style/StatCard"
+                android:backgroundTint="@android:color/white">
+
+                <TextView
+                    style="@style/StatTitle"
+                    android:text="@string/reactivated_subscriptions" />
+
+                <TextView
+                    style="@style/StatValue"
+                    android:text="345" />
+
+                <TextView
+                    style="@style/StatChangeNegative"
+                    android:text="-5%" />
+            </LinearLayout>
+
+            <!-- Card 4 -->
+            <LinearLayout
+                style="@style/StatCard"
+                android:backgroundTint="@android:color/white">
+
+                <TextView
+                    style="@style/StatTitle"
+                    android:text="@string/total_active_subscribers" />
+
+                <TextView
+                    style="@style/StatValue"
+                    android:text="10,112" />
+
+                <TextView
+                    style="@style/StatChangePositive"
+                    android:text="+3%" />
+            </LinearLayout>
+        </GridLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/net_subscription_growth"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvPersenNetSubs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_15"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/black"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:id="@+id/tvDaysSubsGrowt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/example_net_subs_growth"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/green" />
+    </LinearLayout>
+</ScrollView>

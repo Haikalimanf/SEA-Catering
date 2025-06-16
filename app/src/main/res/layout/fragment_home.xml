@@ -38,7 +38,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins"
-                    android:text="Healthy Meals, Delivered Daily"
+                    android:text="@string/headline_banner"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="36sp"
@@ -48,7 +48,7 @@
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Customizable meal plans designed for your health goals"
+                    android:text="@string/desc_banner"
                     android:textAlignment="center"
                     android:textSize="14sp"
                     android:layout_marginTop="8dp"
@@ -59,7 +59,7 @@
                     android:layout_width="150dp"
                     android:layout_height="40dp"
                     android:background="@drawable/button_rounded"
-                    android:text="Explore Menu" />
+                    android:text="@string/explore_menu" />
             </LinearLayout>
         </FrameLayout>
 
@@ -73,7 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_bold"
-                android:text="Our Advantages"
+                android:text="@string/our_advantages"
                 android:textColor="@color/black"
                 android:textSize="22sp" />
 
@@ -88,7 +88,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_bold"
-                android:text="This Week's Popular Plans"
+                android:text="@string/popular_plans"
                 android:textColor="@color/black"
                 android:textSize="22sp" />
 
@@ -103,7 +103,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_bold"
-                android:text="Our Testimonials"
+                android:text="@string/testimonials"
                 android:textColor="@color/black"
                 android:textSize="22sp" />
 

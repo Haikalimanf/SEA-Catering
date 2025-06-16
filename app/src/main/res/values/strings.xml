@@ -68,6 +68,7 @@
     <string name="desc_bottom_sheet">Select the date range during which you do not want to receive deliveries.</string>
     <string name="select_date">Select Date</string>
     <string name="confirm_pause">Confirm Pause</string>
+    <string name="logo_calender">logo_calender</string>
 
     // Contact Us
     <string name="contact_via_whatsapp">Contact via WhatsApp</string>
@@ -80,6 +81,12 @@
 
     //Home
     <string name="add_review">Add Review</string>
+    <string name="our_advantages">Our Advantages</string>
+    <string name="popular_plans">This Week\'s Popular Plans</string>
+    <string name="testimonials">Our Testimonials</string>
+    <string name="headline_banner">Healthy Meals, Delivered Daily</string>
+    <string name="desc_banner">Customizable meal plans designed for your health goals</string>
+    <string name="explore_menu">Explore Menu</string>
 
     // Subcription
     <string name="title_page_subcription">Build Your Subscription Plan</string>
@@ -115,10 +122,29 @@
     <string name="post">Post</string>
     <string name="cancel">Cancel</string>
 
+    // Dashboard Admin
+    <string name="net_subscription_growth">Net Subscription Growth</string>
+    <string name="example_net_subs_growth">Last 30 Days +15%</string>
+    <string name="_15">+15%</string>
+    <string name="total_active_subscribers">Total Active\nSubscribers</string>
+    <string name="reactivated_subscriptions">Reactivated\nSubscriptions</string>
+    <string name="new_subscriptions">New Subscriptions</string>
+    <string name="total_revenue">Total Revenue\n(MRR)</string>
+    <string name="select_date_range">Select Date Range</string>
+    <string name="last_30_days">Last 30 Days</string>
+    <string-array name="date_ranges">
+        <item>Last 7 Days</item>
+        <item>Last 30 Days</item>
+        <item>This Month</item>
+        <item>Custom Range</item>
+    </string-array>
+
+
+
     // String
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="logo_calender">logo_calender</string>
+
 
 
 </resources>

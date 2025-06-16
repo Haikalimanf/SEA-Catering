@@ -60,4 +60,9 @@ class RegisterActivity : AppCompatActivity() {
         binding.tvSignIn.highlightColor = android.graphics.Color.TRANSPARENT
 
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }

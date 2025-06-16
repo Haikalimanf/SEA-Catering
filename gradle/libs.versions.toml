@@ -18,6 +18,8 @@ kotlinxCoroutinesAndroid = "1.10.1"
 roomRuntime = "2.7.1"
 activity = "1.10.1"
 lottie = "6.6.6"
+googleGmsGoogleServices = "4.4.2"
+firebaseAuth = "23.2.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -40,8 +42,10 @@ androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref =
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
+firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 dagger-hilt = {id = "com.google.dagger.hilt.android", version.ref = "hiltAndroid"}
+google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
