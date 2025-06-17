@@ -7,22 +7,18 @@ import android.text.Spanned
 import android.text.TextPaint
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
+import android.util.Patterns
 import android.view.View
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.seacatering.R
-import com.example.seacatering.databinding.ActivityLoginBinding
 import com.example.seacatering.databinding.ActivityRegisterBinding
-import com.example.seacatering.ui.MainActivity
 import com.example.seacatering.ui.auth.login.LoginActivity
-import com.example.seacatering.utils.AuthState
-import com.google.firebase.auth.FirebaseAuth
+import com.example.seacatering.model.state.AuthState
+import com.example.seacatering.utils.Validator.isValidPassword
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -43,16 +39,28 @@ class RegisterActivity : AppCompatActivity() {
         observeRegisterState()
 
         binding.btnSignUp.setOnClickListener {
+            val username = binding.edtUsername.text.toString()
             val email = binding.edtEmail.text.toString()
             val password = binding.edtPassword.text.toString()
 
-            if (email.isNotEmpty() && password.isNotEmpty()) {
-                viewModel.register(email, password)
-            } else {
-                Toast.makeText(this, "Empty Fields Are Not Allowed", Toast.LENGTH_SHORT).show()
+            when {
+                username.isEmpty() || email.isEmpty() || password.isEmpty() -> {
+                    Toast.makeText(this, "Semua field harus diisi.", Toast.LENGTH_SHORT).show()
+                }
+
+                !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
+                    Toast.makeText(this, "Format email tidak valid.", Toast.LENGTH_SHORT).show()
+                }
+
+                !isValidPassword(password) -> {
+                    Toast.makeText(this, "Password minimal 8 karakter, harus ada huruf besar, kecil, angka, dan simbol.", Toast.LENGTH_SHORT).show()
+                }
+
+                else -> {
+                    viewModel.registerAndSaveUser(email, password, username)
+                }
             }
         }
-
     }
 
     private fun observeRegisterState() {

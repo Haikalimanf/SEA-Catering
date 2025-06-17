@@ -1,5 +1,6 @@
 package com.example.seacatering.repository
 
+import com.example.seacatering.model.auth.AuthOutcome
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.tasks.await
@@ -10,21 +11,34 @@ import javax.inject.Singleton
 class AuthRepository @Inject constructor(
     private val firebaseAuth: FirebaseAuth
 ) {
-    suspend fun login(email: String, password: String): Result<AuthResult> {
+    suspend fun login(email: String, password: String): Result<AuthOutcome> {
         return try {
             val result = firebaseAuth.signInWithEmailAndPassword(email, password).await()
-            Result.success(result)
+            val user = result.user ?: throw IllegalStateException("User kosong")
+            val outcome = AuthOutcome(user.uid, user.email)
+            Result.success(outcome)
         } catch (e: Exception) {
             Result.failure(e)
         }
     }
 
-    suspend fun register(email: String, password: String): Result<AuthResult> {
+    suspend fun register(email: String, password: String): Result<AuthOutcome> {
         return try {
             val result = firebaseAuth.createUserWithEmailAndPassword(email, password).await()
-            Result.success(result)
+            val user = result.user ?: throw IllegalStateException("User kosong")
+            val outcome = AuthOutcome(user.uid, user.email)
+            Result.success(outcome)
         } catch (e: Exception) {
             Result.failure(e)
         }
     }
+
+    fun getCurrentUserId(): String? {
+        return firebaseAuth.currentUser?.uid
+    }
+
+    fun logout() {
+        firebaseAuth.signOut()
+    }
+
 }

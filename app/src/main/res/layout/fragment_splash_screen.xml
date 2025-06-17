@@ -12,10 +12,7 @@
         android:layout_width="260dp"
         android:layout_height="260dp"
         android:src="@drawable/logo_sea_catering"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+         />
 
     <FrameLayout
         android:layout_width="match_parent"

@@ -1,6 +1,10 @@
 package com.example.seacatering.di
 
+import com.example.seacatering.repository.FirestoreRepository
+import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.firestore
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,7 +16,11 @@ import javax.inject.Singleton
 object AppModule {
 
     @Provides
-    @Singleton
     fun provideFirebaseAuth(): FirebaseAuth = FirebaseAuth.getInstance()
+
+    @Provides
+    fun provideFirebaseFirestore(): FirebaseFirestore {
+        return Firebase.firestore
+    }
 
 }

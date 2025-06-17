@@ -7,24 +7,17 @@ import android.text.Spanned
 import android.text.TextPaint
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
-import android.text.style.ForegroundColorSpan
 import android.view.View
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.seacatering.R
-import com.example.seacatering.databinding.ActivityContactUsBinding
-import com.example.seacatering.databinding.ActivityDashboardBinding
 import com.example.seacatering.databinding.ActivityLoginBinding
 import com.example.seacatering.ui.MainActivity
 import com.example.seacatering.ui.auth.register.RegisterActivity
-import com.example.seacatering.utils.AuthState
-import com.google.firebase.auth.FirebaseAuth
+import com.example.seacatering.model.state.AuthState
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

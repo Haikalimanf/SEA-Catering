@@ -6,10 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import com.example.seacatering.R
 import com.example.seacatering.databinding.FragmentThirdScreenBinding
+import com.example.seacatering.model.local.OnboardingPreferences
 import com.example.seacatering.ui.MainActivity
 import com.example.seacatering.ui.auth.login.LoginActivity
+import kotlinx.coroutines.launch
 
 
 class ThirdScreen : Fragment() {
@@ -25,9 +28,12 @@ class ThirdScreen : Fragment() {
 
 
         binding.btnFinish.setOnClickListener {
-            val intent = Intent(activity, LoginActivity::class.java)
-            startActivity(intent)
-            activity?.finish()
+            lifecycleScope.launch{
+                OnboardingPreferences.setOnboardingCompleted(requireContext())
+                val intent = Intent(activity, LoginActivity::class.java)
+                startActivity(intent)
+                activity?.finish()
+            }
         }
 
         return binding.root

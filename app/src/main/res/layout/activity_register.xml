@@ -104,19 +104,28 @@
             android:textColor="@color/black"
             android:textSize="18sp" />
 
-        <EditText
-            android:id="@+id/edt_password"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutPassword"
             android:layout_width="match_parent"
-            android:layout_height="51dp"
-            android:background="@drawable/edit_text_border"
-            android:hint="@string/hint_password"
+            android:layout_height="wrap_content"
             android:textColorHint="@color/gray"
-            android:paddingStart="15dp"
-            android:paddingEnd="16dp"
-            android:autofillHints="password"
             android:fontFamily="@font/poppins"
+            android:layout_marginTop="-4dp"
             android:textSize="14sp"
-            android:inputType="textPassword" />
+            app:endIconMode="password_toggle"
+            app:endIconTint="@color/gray"
+            app:hintEnabled="false"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_password"
+                android:background="@drawable/edit_text_border"
+                android:inputType="textPassword"
+                android:autofillHints="password" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btn_signUp"
