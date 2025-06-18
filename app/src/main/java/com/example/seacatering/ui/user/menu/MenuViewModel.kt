@@ -3,11 +3,39 @@ package com.example.seacatering.ui.user.menu
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.seacatering.model.DataMealPlan
+import com.example.seacatering.repository.CateringRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MenuViewModel : ViewModel() {
+@HiltViewModel
+class MenuViewModel @Inject constructor(
+    private val repository: CateringRepository
+) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
+    private val _mealPlans = MutableStateFlow<List<DataMealPlan>>(emptyList())
+    val mealPlans: StateFlow<List<DataMealPlan>> = _mealPlans
+
+    private val _errorMessage = MutableStateFlow<String?>(null)
+    val errorMessage: StateFlow<String?> = _errorMessage
+
+    init {
+        fetchMealPlans()
     }
-    val text: LiveData<String> = _text
+
+    private fun fetchMealPlans() {
+        viewModelScope.launch {
+            val result = repository.getAllMealPlans()
+            if (result.isSuccess) {
+                _mealPlans.value = result.getOrNull() ?: emptyList()
+            } else {
+                _errorMessage.value = result.exceptionOrNull()?.message ?: "Unknown error"
+            }
+        }
+    }
+
 }

@@ -92,28 +92,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/poppins"
-            android:text="@string/password"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/edt_password"
-            android:layout_width="match_parent"
-            android:layout_height="51dp"
-            android:background="@drawable/edit_text_border"
-            android:hint="@string/hint_password"
-            android:textColorHint="@color/gray"
-            android:paddingStart="15dp"
-            android:paddingEnd="16dp"
-            android:fontFamily="@font/poppins"
-            android:textSize="14sp"
-            android:inputType="textPassword"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/poppins"
             android:text="@string/address"
             android:textColor="@color/black"
             android:textSize="18sp" />

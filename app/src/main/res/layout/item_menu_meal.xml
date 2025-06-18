@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="16dp"
+    android:layout_margin="12dp"
     card_view:cardCornerRadius="16dp"
     card_view:cardElevation="4dp">
 
@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Diet Plan"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 android:textColor="@color/black" />
 
@@ -55,8 +55,8 @@
             android:paddingHorizontal="12dp"
             android:paddingBottom="12dp"
             android:text="Delicious, low-calorie meals designed to help you shed pounds without sacrificing flavor."
-            android:textSize="14sp"
-            android:textColor="@color/gray" />
+            android:textSize="16sp"
+            android:textColor="@color/green" />
 
         <Button
             android:id="@+id/btn_view_details"

@@ -6,7 +6,7 @@ import com.google.firebase.Timestamp
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Subscription(
+data class DataSubscription(
     val id: String,
     val userId: String,
     val phone_number: String,

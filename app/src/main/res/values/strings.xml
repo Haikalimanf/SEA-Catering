@@ -140,6 +140,9 @@
     </string-array>
 
 
+    // Image Uri
+    <string name="banner_image_home">https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/default_avatar_man.jpg</string>
+
 
     // String
     <!-- TODO: Remove or change this placeholder text -->

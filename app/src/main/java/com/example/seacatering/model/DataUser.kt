@@ -5,7 +5,7 @@ import com.example.seacatering.model.enums.UserRole
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class User(
+data class DataUser(
     val id: String = "",
     val name: String = "",
     val email: String = "",

@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.seacatering.model.state.RoleResultState
 import com.example.seacatering.repository.AuthRepository
-import com.example.seacatering.repository.FirestoreRepository
+import com.example.seacatering.repository.CateringRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -14,7 +14,7 @@ import javax.inject.Inject
 @HiltViewModel
 class SplashViewModel @Inject constructor(
     private val authRepository: AuthRepository,
-    private val firestoreRepository: FirestoreRepository,
+    private val cateringRepository: CateringRepository,
 ): ViewModel()
 {
     private val _roleState = MutableStateFlow<RoleResultState>(RoleResultState.Loading)
@@ -28,7 +28,7 @@ class SplashViewModel @Inject constructor(
         }
 
         viewModelScope.launch {
-            val result = firestoreRepository.getUserById(userId)
+            val result = cateringRepository.getUserById(userId)
             if (result.isSuccess) {
                 val role = result.getOrNull()?.role
                 if (role != null) {

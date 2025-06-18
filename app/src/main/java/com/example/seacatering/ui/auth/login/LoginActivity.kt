@@ -35,7 +35,10 @@ class LoginActivity : AppCompatActivity() {
 
         setupClickableSignUp()
         observeLoginState()
+        btnLogin()
+    }
 
+    private fun btnLogin() {
         binding.btnLogin.setOnClickListener {
             val email = binding.edtEmail.text.toString()
             val password = binding.edtPassword.text.toString()
@@ -46,8 +49,8 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "Empty Fields Are Not Allowed", Toast.LENGTH_SHORT).show()
             }
         }
-
     }
+
 
     private fun observeLoginState() {
         lifecycleScope.launchWhenStarted {

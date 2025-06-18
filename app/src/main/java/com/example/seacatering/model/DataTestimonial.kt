@@ -5,7 +5,7 @@ import com.google.firebase.Timestamp
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Testimonial(
+data class DataTestimonial(
     val id: String,
     val userId: String,
     val reviewText: String,
