@@ -35,7 +35,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Diet Plan"
+                tools:text="Diet Plan"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:textColor="@color/black" />
@@ -44,6 +44,7 @@
                 android:id="@+id/tv_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                tools:text="Rp3000/Meal"
                 android:textSize="14sp"
                 android:textColor="@color/black" />
         </LinearLayout>
@@ -54,6 +55,7 @@
             android:layout_height="wrap_content"
             android:paddingHorizontal="12dp"
             android:paddingBottom="12dp"
+            tools:text="A balanced mix of proteins, carbs, and fats for overall health."
             android:justificationMode="inter_word"
             android:textSize="16sp"
             android:textColor="@color/green" />

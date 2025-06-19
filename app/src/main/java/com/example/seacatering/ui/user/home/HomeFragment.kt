@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -19,8 +18,10 @@ import com.example.seacatering.ui.user.menu.DetailMenuActivity
 import com.example.seacatering.ui.user.menu.MealPlanAdapter
 import com.example.seacatering.ui.user.menu.MenuViewModel
 import com.example.seacatering.ui.user.review.ReviewActivity
+import com.example.seacatering.ui.user.review.ReviewViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -30,6 +31,7 @@ class HomeFragment : Fragment() {
 
     private val menuviewModel: MenuViewModel by viewModels()
     private val advantagesViewModel: HomeViewModel by viewModels()
+    private val reviewViewModel: ReviewViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,12 +46,27 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         toReview()
         toMenu()
         showAdvantages()
         showBanner()
         showMenu()
+        showTestimonial()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        reviewViewModel.getAllTestimonial()
+    }
+
+    private fun showTestimonial() {
+        val adapter = ReviewAdapter()
+        binding.rvTestimonials.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.rvTestimonials.adapter = adapter
+
+        reviewViewModel.getReview.observe(viewLifecycleOwner) { list ->
+            adapter.submitList(list)
+        }
     }
 
     private fun showBanner() {
@@ -109,7 +126,6 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
     }
-
 
 
     override fun onDestroyView() {

@@ -1,0 +1,57 @@
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    card_view:cardCornerRadius="16dp"
+    card_view:cardElevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/tvReview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:paddingTop="8dp"
+            android:paddingBottom="4dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:lineSpacingExtra="2dp"
+            android:lines="3"
+            android:ellipsize="end"
+            android:justificationMode="inter_word"
+            tools:text="This is a long review text that should wrap into multiple lines. It will expand vertically as needed to display all content."
+         />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:rating="4"
+            android:stepSize="0.5"
+            android:isIndicator="true"
+            android:layout_gravity="center"
+            style="@style/Widget.AppCompat.RatingBar"
+            android:progressTint="@color/yellow" />
+
+        <TextView
+            android:id="@+id/tvNameUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:paddingTop="8dp"
+            android:textColor="@color/green"
+            android:textSize="14sp"
+            tools:text="by Sarah A." />
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
