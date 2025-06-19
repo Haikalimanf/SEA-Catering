@@ -73,8 +73,9 @@
     // Contact Us
     <string name="contact_via_whatsapp">Contact via WhatsApp</string>
     <string name="call_contact">Call Contact</string>
-    <string name="number_brian">08123456789</string>
+    <string name="number_brian">+628123456789</string>
     <string name="phone_number">Phone Number</string>
+    <string name="message">Hallo, saya ingin bertanya tentang pesanan saya.</string>
     <string name="brian_manager">Brian (Manager)</string>
     <string name="desc_contact_us">Get in touch if you have any questions about your order or our service.</string>
     <string name="title_contact_us">We\'re here to help</string>
