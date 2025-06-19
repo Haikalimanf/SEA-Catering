@@ -140,15 +140,18 @@
         <item>Custom Range</item>
     </string-array>
 
+    // Menu
+    <string name="menu_plan_image">Menu Plan Image</string>
+
 
     // Image Uri
-    <string name="banner_image_home">https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/default_avatar_man.jpg</string>
+    <string name="banner_image_home">https://github.com/Haikalimanf/AssetFotoIconSalon/blob/main/banner_image_home.png?raw=true</string>
 
 
     // String
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string name="view_detail">View Detail</string>
 
 
 </resources>

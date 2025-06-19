@@ -1,5 +1,6 @@
 package com.example.seacatering.repository
 
+import com.example.seacatering.model.DataAdvantages
 import com.example.seacatering.model.DataMealPlan
 import com.example.seacatering.model.DataSubscription
 import com.example.seacatering.model.DataTestimonial
@@ -36,6 +37,16 @@ class CateringRepository @Inject constructor(
         return try {
             val snapshot = firestore.collection("meal_plans").get().await()
             val plans = snapshot.toObjects(DataMealPlan::class.java)
+            Result.success(plans)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    suspend fun getAllAdvantages(): Result<List<DataAdvantages>> {
+        return try {
+            val snapshot = firestore.collection("advantages").get().await()
+            val plans = snapshot.toObjects(DataAdvantages::class.java)
             Result.success(plans)
         } catch (e: Exception) {
             Result.failure(e)

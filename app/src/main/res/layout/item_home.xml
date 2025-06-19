@@ -42,6 +42,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
             android:padding="8dp"
+            android:justificationMode="inter_word"
             android:text="@string/let_us_know_about_any_allergies"
             android:textColor="@color/green"
             android:textSize="14sp"

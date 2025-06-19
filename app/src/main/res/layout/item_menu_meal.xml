@@ -20,7 +20,8 @@
             android:layout_height="180dp"
             android:scaleType="centerCrop"
             tools:src="@tools:sample/avatars"
-            android:contentDescription="Diet Plan Image" />
+            android:contentDescription="@string/menu_plan_image"
+        />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -43,7 +44,6 @@
                 android:id="@+id/tv_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rp30.000/meal"
                 android:textSize="14sp"
                 android:textColor="@color/black" />
         </LinearLayout>
@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:paddingHorizontal="12dp"
             android:paddingBottom="12dp"
-            android:text="Delicious, low-calorie meals designed to help you shed pounds without sacrificing flavor."
+            android:justificationMode="inter_word"
             android:textSize="16sp"
             android:textColor="@color/green" />
 
@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:layout_margin="12dp"
-            android:text="View Details"
+            android:text="@string/view_detail"
             android:textColor="@android:color/white"
             android:backgroundTint="@color/green" />
 

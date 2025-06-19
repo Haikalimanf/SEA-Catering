@@ -38,6 +38,11 @@ class MenuFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        showMenu()
+    }
+
+    private fun showMenu() {
         val adapter = MealPlanAdapter { selectedMeal ->
             val intent = Intent(requireContext(), DetailMenuActivity::class.java)
             intent.putExtra("meal_plan", selectedMeal)
