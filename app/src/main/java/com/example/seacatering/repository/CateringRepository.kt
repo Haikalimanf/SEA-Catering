@@ -1,6 +1,7 @@
 package com.example.seacatering.repository
 
 import com.example.seacatering.model.DataAdvantages
+import com.example.seacatering.model.DataCheckout
 import com.example.seacatering.model.DataMealPlan
 import com.example.seacatering.model.DataSubscription
 import com.example.seacatering.model.DataTestimonial
@@ -73,6 +74,16 @@ class CateringRepository @Inject constructor(
         }
     }
 
+    suspend fun addCheckout(dataCheckout: DataCheckout): Result<Void?> {
+        return try {
+            val docRef = firestore.collection("checkout").document(dataCheckout.id)
+            docRef.set(dataCheckout).await()
+            Result.success(null)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
     suspend fun addTestimonial(dataTestimonial: DataTestimonial): Result<Void?> {
         return try {
             val docRef = firestore.collection("testimonials").document(dataTestimonial.id)
@@ -102,6 +113,20 @@ class CateringRepository @Inject constructor(
 
             val subscriptions = snapshot.toObjects(DataSubscription::class.java)
             Result.success(subscriptions)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    suspend fun getUserCheckout(userId: String): Result<List<DataCheckout>> {
+        return try {
+            val snapshot = firestore.collection("checkout")
+                .whereEqualTo("userId", userId)
+                .get()
+                .await()
+
+            val checkout = snapshot.toObjects(DataCheckout::class.java)
+            Result.success(checkout)
         } catch (e: Exception) {
             Result.failure(e)
         }

@@ -1,5 +1,6 @@
 package com.example.seacatering.ui.user.subcription
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,16 +8,34 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.example.seacatering.databinding.FragmentSubscriptionBinding
+import com.example.seacatering.model.DataCheckout
+import com.example.seacatering.model.DataSubscription
+import com.example.seacatering.model.enums.SubscriptionStatus
+import com.example.seacatering.ui.auth.login.LoginActivity
+import com.example.seacatering.ui.user.checkout.CheckoutActivity
+import com.example.seacatering.ui.user.review.ReviewActivity
+import com.google.firebase.Timestamp
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.firstOrNull
+import kotlinx.coroutines.launch
+import java.util.Calendar
 
+@AndroidEntryPoint
 class SubscriptionFragment : Fragment() {
 
     private var _binding: FragmentSubscriptionBinding? = null
     private val binding get() = _binding!!
 
     private val radioButtons by lazy {
-        listOf(binding.rbPlan1, binding.rbPlan2, binding.rbPlan3)
+        mapOf(
+            binding.rbPlan1 to (0 to "Diet Plan"),
+            binding.rbPlan2 to (1 to "Protein Plan"),
+            binding.rbPlan3 to (2 to "Royal Plan")
+        )
     }
 
     override fun onCreateView(
@@ -24,32 +43,61 @@ class SubscriptionFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val subscriptionViewModel =
-            ViewModelProvider(this).get(SubscriptionViewModel::class.java)
-
         _binding = FragmentSubscriptionBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        return binding.root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setupRadioButtons()
+        setupSubscriptionFlow()
+    }
 
+    private fun setupSubscriptionFlow() {
         binding.btnSubcribe.setOnClickListener {
-            if (validateInputs()) {
-                val selectedPlan = getSelectedPlan()
-                val allergies = binding.edtAllergies.text.toString().trim()
+            if (!validateInputs()) return@setOnClickListener
 
-                Toast.makeText(requireContext(), "All input valid. Plan: $selectedPlan", Toast.LENGTH_SHORT).show()
+            val username = binding.edtUsername.text.toString().trim()
+            val phone = binding.edtPhoneNumber.text.toString().trim()
+            val selectedPlanIndex = getSelectedPlanIndex()
+            val selectedPlanText = getSelectedPlan()
+            val mealPlan = getSelectedMeals()
+            val deliveryDays = getSelectedDeliveryDays()
+            val allergies = binding.edtAllergies.text.toString().trim()
+
+            val calendar = Calendar.getInstance()
+            calendar.add(Calendar.MONTH, 1)
+            val oneMonthLater = Timestamp(calendar.time)
+
+            val subscription = DataSubscription(
+                id = "",
+                userId = "",
+                username = username,
+                phone_number = phone,
+                plan_id = selectedPlanIndex,
+                plan_type_name = selectedPlanText.toString(),
+                meal_plan = mealPlan,
+                delivery_days = deliveryDays,
+                allergies = allergies,
+                status = SubscriptionStatus.ACTIVE,
+                end_date = oneMonthLater,
+                pause_periode_start = "",
+                pause_periode_end = ""
+            )
+
+            val intent = Intent(requireContext(), CheckoutActivity::class.java).apply {
+                putExtra("checkout_data", subscription)
             }
+            startActivity(intent)
         }
-
-
-        return root
     }
 
     private fun setupRadioButtons() {
-        radioButtons.forEach { radioButton ->
-            radioButton.setOnCheckedChangeListener { buttonView, isChecked ->
+        radioButtons.keys.forEach { radioButton ->
+            radioButton.setOnCheckedChangeListener { selected, isChecked ->
                 if (isChecked) {
-                    radioButtons.filterNot { it == buttonView }
+                    radioButtons.keys
+                        .filterNot { it == selected }
                         .forEach { it.isChecked = false }
                 }
             }
@@ -57,7 +105,31 @@ class SubscriptionFragment : Fragment() {
     }
 
     private fun getSelectedPlan(): String? {
-        return radioButtons.find { it.isChecked }?.text?.toString()
+        return radioButtons.entries.find { it.key.isChecked }?.value?.second
+    }
+
+    private fun getSelectedPlanIndex(): Int {
+        return radioButtons.entries.find { it.key.isChecked }?.value?.first ?: -1
+    }
+
+    private fun getSelectedMeals(): String {
+        val meals = mutableListOf<String>()
+        if (binding.cbBreakfest.isChecked) meals.add("Breakfast")
+        if (binding.cbLaunch.isChecked) meals.add("Lunch")
+        if (binding.cbDinner.isChecked) meals.add("Dinner")
+        return meals.joinToString(", ")
+    }
+
+    private fun getSelectedDeliveryDays(): List<String> {
+        val days = mutableListOf<String>()
+        if (binding.cbMonday.isChecked) days.add("Monday")
+        if (binding.cbTuesday.isChecked) days.add("Tuesday")
+        if (binding.cbWednesday.isChecked) days.add("Wednesday")
+        if (binding.cbThursday.isChecked) days.add("Thursday")
+        if (binding.cbFriday.isChecked) days.add("Friday")
+        if (binding.cbSaturday.isChecked) days.add("Saturday")
+        if (binding.cbSunday.isChecked) days.add("Sunday")
+        return days
     }
 
     private fun isMealTypeSelected(): Boolean {
@@ -71,7 +143,7 @@ class SubscriptionFragment : Fragment() {
     }
 
     private fun validateInputs(): Boolean {
-        val username = binding.edtEmail.text.toString().trim()
+        val username = binding.edtUsername.text.toString().trim()
         val phone = binding.edtPhoneNumber.text.toString().trim()
         val selectedPlan = getSelectedPlan()
         val isMealChecked = isMealTypeSelected()
@@ -79,7 +151,7 @@ class SubscriptionFragment : Fragment() {
 
         return when {
             username.isEmpty() -> {
-                binding.edtEmail.error = "Please enter your name"
+                binding.edtUsername.error = "Please enter your name"
                 false
             }
             phone.isEmpty() -> {

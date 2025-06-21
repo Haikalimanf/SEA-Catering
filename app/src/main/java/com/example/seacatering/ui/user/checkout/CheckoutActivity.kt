@@ -1,18 +1,33 @@
 package com.example.seacatering.ui.user.checkout
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
 import com.example.seacatering.R
 import com.example.seacatering.databinding.ActivityCheckoutBinding
 import com.example.seacatering.databinding.ActivityContactUsBinding
+import com.example.seacatering.model.DataCheckout
+import com.example.seacatering.model.DataSubscription
+import com.example.seacatering.ui.user.subcription.SubscriptionViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class CheckoutActivity : AppCompatActivity() {
 
     private var _binding: ActivityCheckoutBinding? = null
     private val binding get() = _binding!!
+
+    private val checkoutViewModel: CheckoutViewModel by viewModels()
+    private val subscriptionViewModel: SubscriptionViewModel by viewModels()
+
+    private var dataCheckout: DataSubscription? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,8 +35,68 @@ class CheckoutActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        val pageTitle = getString(R.string.checkout)
-        supportActionBar?.title = pageTitle
+        supportActionBar?.title = getString(R.string.checkout)
+
+        dataCheckout = intent.getParcelableExtra("checkout_data")
+
+        setupUI()
+        setupCheckoutAction()
+    }
+
+    private fun setupUI() {
+        dataCheckout?.let {
+            binding.name.text = it.username
+            binding.noPhone.text = it.phone_number
+            binding.planSelection.text = it.meal_plan
+            binding.mealType.text = it.plan_type_name
+            binding.deliveryDays.text = it.delivery_days.joinToString(", ")
+            binding.allergies.text = it.allergies
+        }
+    }
+
+    private fun setupCheckoutAction() {
+        binding.btnCheckout.setOnClickListener {
+            val data = dataCheckout
+            if (data == null) {
+                Toast.makeText(this, "Invalid subscription data", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            lifecycleScope.launch {
+                val alreadySubscribed = subscriptionViewModel.hasExistingSubscription()
+                if (alreadySubscribed) {
+                    Toast.makeText(
+                        this@CheckoutActivity,
+                        "You have already subscribed. Only one active subscription is allowed.",
+                        Toast.LENGTH_LONG
+                    ).show()
+                    return@launch
+                }
+
+                subscriptionViewModel.addSubscription(data)
+
+                val checkout = DataCheckout(
+                    id = "",
+                    userId = data.userId,
+                    name = data.username,
+                    phone_number = data.phone_number,
+                    plan_id = data.plan_id,
+                    plan_type_name = data.plan_type_name,
+                    meal_plan = data.meal_plan,
+                    delivery_days = data.delivery_days,
+                    allergies = data.allergies
+                )
+
+                checkoutViewModel.addCheckOut(checkout)
+
+                Toast.makeText(
+                    this@CheckoutActivity,
+                    "Checkout and subscription successful!",
+                    Toast.LENGTH_SHORT
+                ).show()
+                finish()
+            }
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -42,6 +42,7 @@
                 android:fontFamily="@font/poppins" />
 
             <TextView
+                android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Jhon Doe"
@@ -65,6 +66,7 @@
                 android:fontFamily="@font/poppins" />
 
             <TextView
+                android:id="@+id/noPhone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="08912124342"
@@ -94,6 +96,7 @@
                 android:fontFamily="@font/poppins" />
 
             <TextView
+                android:id="@+id/plan_selection"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Protein Plan"
@@ -117,6 +120,7 @@
                 android:fontFamily="@font/poppins" />
 
             <TextView
+                android:id="@+id/meal_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Only Breakfast"
@@ -139,6 +143,7 @@
             android:fontFamily="@font/poppins" />
 
         <TextView
+            android:id="@+id/delivery_days"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Sunday, Tuesday"
@@ -161,6 +166,7 @@
             android:fontFamily="@font/poppins" />
 
         <TextView
+            android:id="@+id/allergies"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="I have a Sigma"
