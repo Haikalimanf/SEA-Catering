@@ -6,6 +6,7 @@ import com.example.seacatering.model.DataMealPlan
 import com.example.seacatering.model.DataSubscription
 import com.example.seacatering.model.DataTestimonial
 import com.example.seacatering.model.DataUser
+import com.example.seacatering.model.enums.SubscriptionStatus
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
@@ -57,7 +58,7 @@ class CateringRepository @Inject constructor(
     suspend fun updateUser(user: DataUser): Result<Void?> {
         return try {
             val docRef = firestore.collection("users").document(user.id)
-            docRef.set(user).await() // overwrite dokumen dengan user.id
+            docRef.set(user).await()
             Result.success(null)
         } catch (e: Exception) {
             Result.failure(e)
@@ -113,6 +114,36 @@ class CateringRepository @Inject constructor(
 
             val subscriptions = snapshot.toObjects(DataSubscription::class.java)
             Result.success(subscriptions)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    suspend fun cancelSubscription(subscriptionId: String): Result<Void?> {
+        return try {
+            val subscriptionRef = firestore.collection("subscriptions").document(subscriptionId)
+            subscriptionRef.update("status", SubscriptionStatus.CANCELED.name).await()
+            Result.success(null)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    suspend fun pauseSubscription(
+        subscriptionId: String,
+        pauseStart: String,
+        pauseEnd: String
+    ): Result<Void?> {
+        return try {
+            val subscriptionRef = firestore.collection("subscriptions").document(subscriptionId)
+            subscriptionRef.update(
+                mapOf(
+                    "status" to SubscriptionStatus.PAUSED.name,
+                    "pause_periode_start" to pauseStart,
+                    "pause_periode_end" to pauseEnd
+                )
+            ).await()
+            Result.success(null)
         } catch (e: Exception) {
             Result.failure(e)
         }

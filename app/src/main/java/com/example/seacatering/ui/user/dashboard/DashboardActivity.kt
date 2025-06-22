@@ -1,24 +1,37 @@
 package com.example.seacatering.ui.user.dashboard
 
-import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import com.bumptech.glide.Glide
 import com.example.seacatering.R
-import com.example.seacatering.databinding.ActivityContactUsBinding
 import com.example.seacatering.databinding.ActivityDashboardBinding
 import com.example.seacatering.ui.user.dashboard.bottomsheet.PauseSubscriptionBottomSheet
+import com.example.seacatering.ui.user.menu.MenuViewModel
+import com.example.seacatering.ui.user.profile.ProfileViewModel
 import com.example.seacatering.utils.DialogUtil
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Locale
 
+@AndroidEntryPoint
 class DashboardActivity : AppCompatActivity() {
 
     private var _binding: ActivityDashboardBinding? = null
     private val binding get() = _binding!!
+
+    private val dashboardViewModel: DashboardViewModel by viewModels()
+    private val profileViewModel: ProfileViewModel by viewModels()
+    private val menuViewModel: MenuViewModel by viewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,22 +42,99 @@ class DashboardActivity : AppCompatActivity() {
         val pageTitle = getString(R.string.dashboard)
         supportActionBar?.title = pageTitle
 
-        binding.btnPause.setOnClickListener {
-            val bottomSheet = PauseSubscriptionBottomSheet()
-            bottomSheet.show(supportFragmentManager, PauseSubscriptionBottomSheet::class.java.simpleName)
-        }
+        fetchDataSubcription()
+        fetchDataUser()
+        fetchImageMenu()
+        pauseSubscription()
+        cancelSubscription()
+    }
 
+    private fun fetchImageMenu() {
+        lifecycleScope.launch {
+            combine(
+                menuViewModel.mealPlans,
+                dashboardViewModel.subscriptionData
+            ) { mealPlans, subscription ->
+                val planTypeName = subscription?.plan_type_name
+                val matchedMeal = mealPlans.find { it.name == planTypeName }
+                matchedMeal
+            }.collect { matchedMeal ->
+                matchedMeal?.let {
+                    Glide.with(this@DashboardActivity)
+                        .load(it.imageUri)
+                        .into(binding.imgMenuDashboard)
+
+                }
+            }
+        }
+    }
+
+
+    private fun fetchDataUser() {
+        profileViewModel.fetchCurrentUser()
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                profileViewModel.userState.collect { user ->
+                    user?.let {
+                        binding.greetingUser.text = getString(R.string.greeting, it.name)
+                    }
+                }
+            }
+        }
+    }
+
+    private fun fetchDataSubcription() {
+        dashboardViewModel.fetchUserSubscription()
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED){
+                dashboardViewModel.subscriptionData.collect {
+                    binding.txtPackageName.text = it?.plan_type_name
+                    binding.txtSubscriptionStatus.text = it?.status?.name
+                    binding.txtMealType.text = it?.meal_plan
+                    binding.txtDeliveryDays.text = it?.delivery_days?.joinToString(", ")
+                    val formattedDate = it?.end_date?.toDate()?.let { date ->
+                        val sdf = SimpleDateFormat("dd MMMM yyyy", Locale("id", "ID"))
+                        sdf.format(date)
+                    } ?: "-"
+
+                    binding.txtNextRenewalDate.text = formattedDate
+                }
+            }
+        }
+    }
+
+    private fun cancelSubscription() {
         binding.btnCancelSubscription.setOnClickListener {
             DialogUtil.showConfirmationDialog(
                 context = this,
                 title = "Cancel Subscription",
                 message = "Are you sure you want to cancel subscription?",
                 onConfirmed = {
-                    Toast.makeText(this, "Subscription canceled", Toast.LENGTH_SHORT).show()
+                    val subscriptionId = dashboardViewModel.subscriptionData.value?.id
+                    if (subscriptionId != null) {
+                        dashboardViewModel.cancelUserSubscription(subscriptionId)
+                    }
                 }
             )
+            lifecycleScope.launch {
+                dashboardViewModel.subscriptionStatus.collectLatest { result ->
+                    if (result?.isSuccess == true) {
+                        Toast.makeText(this@DashboardActivity, "Subscription canceled successfully", Toast.LENGTH_SHORT).show()
+                    } else if (result?.isFailure == true) {
+                        Toast.makeText(this@DashboardActivity, "Failed to cancel subscription", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
         }
     }
+
+    private fun pauseSubscription() {
+        binding.btnPause.setOnClickListener {
+            val bottomSheet = PauseSubscriptionBottomSheet()
+            bottomSheet.show(supportFragmentManager, PauseSubscriptionBottomSheet::class.java.simpleName)
+        }
+    }
+
 
     override fun onSupportNavigateUp(): Boolean {
         finish()

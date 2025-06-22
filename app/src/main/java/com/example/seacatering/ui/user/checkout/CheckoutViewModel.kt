@@ -22,12 +22,9 @@ class CheckoutViewModel @Inject constructor(
     private val _checkoutData = MutableStateFlow<DataCheckout?>(null)
     val checkoutData: StateFlow<DataCheckout?> = _checkoutData
 
-
     init {
         fetchUserCheckout()
     }
-
-
 
     fun addCheckOut(dataCheckout: DataCheckout) {
         viewModelScope.launch {
