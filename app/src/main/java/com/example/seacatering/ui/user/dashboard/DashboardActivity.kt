@@ -2,6 +2,7 @@ package com.example.seacatering.ui.user.dashboard
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -11,10 +12,13 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.bumptech.glide.Glide
 import com.example.seacatering.R
 import com.example.seacatering.databinding.ActivityDashboardBinding
+import com.example.seacatering.model.enums.SubscriptionStatus
+import com.example.seacatering.ui.user.checkout.CheckoutViewModel
 import com.example.seacatering.ui.user.dashboard.bottomsheet.PauseSubscriptionBottomSheet
 import com.example.seacatering.ui.user.menu.MenuViewModel
 import com.example.seacatering.ui.user.profile.ProfileViewModel
 import com.example.seacatering.utils.DialogUtil
+import com.example.seacatering.utils.FormatRupiah.formatRupiah
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combine
@@ -63,12 +67,10 @@ class DashboardActivity : AppCompatActivity() {
                     Glide.with(this@DashboardActivity)
                         .load(it.imageUri)
                         .into(binding.imgMenuDashboard)
-
                 }
             }
         }
     }
-
 
     private fun fetchDataUser() {
         profileViewModel.fetchCurrentUser()
@@ -86,22 +88,30 @@ class DashboardActivity : AppCompatActivity() {
     private fun fetchDataSubcription() {
         dashboardViewModel.fetchUserSubscription()
         lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED){
-                dashboardViewModel.subscriptionData.collect {
-                    binding.txtPackageName.text = it?.plan_type_name
-                    binding.txtSubscriptionStatus.text = it?.status?.name
-                    binding.txtMealType.text = it?.meal_plan
-                    binding.txtDeliveryDays.text = it?.delivery_days?.joinToString(", ")
-                    val formattedDate = it?.end_date?.toDate()?.let { date ->
-                        val sdf = SimpleDateFormat("dd MMMM yyyy", Locale("id", "ID"))
-                        sdf.format(date)
-                    } ?: "-"
-
-                    binding.txtNextRenewalDate.text = formattedDate
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                dashboardViewModel.subscriptionData.collect { data ->
+                    if (data == null || data.status == SubscriptionStatus.CANCELED) {
+                        binding.subscriptionContent.visibility = View.GONE
+                        binding.emptySubscriptionText.visibility = View.VISIBLE
+                    } else {
+                        binding.subscriptionContent.visibility = View.VISIBLE
+                        binding.emptySubscriptionText.visibility = View.GONE
+                        binding.txtPackageName.text = data.plan_type_name
+                        binding.txtSubscriptionStatus.text = data.status.name
+                        binding.txtMealType.text = data.meal_plan.joinToString(", ")
+                        binding.txtDeliveryDays.text = data.delivery_days.joinToString(", ")
+                        val formattedDate = data.end_date.toDate().let { date ->
+                            val sdf = SimpleDateFormat("dd MMMM yyyy", Locale("id", "ID"))
+                            sdf.format(date)
+                        }
+                        binding.txtNextRenewalDate.text = formattedDate
+                        binding.txtTotalPrice.text = formatRupiah(data.total_price)
+                    }
                 }
             }
         }
     }
+
 
     private fun cancelSubscription() {
         binding.btnCancelSubscription.setOnClickListener {

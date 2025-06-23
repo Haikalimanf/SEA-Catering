@@ -1,10 +1,12 @@
 package com.example.seacatering.ui.user.subcription
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.seacatering.model.DataCheckout
 import com.example.seacatering.model.DataSubscription
 import com.example.seacatering.model.DataTestimonial
+import com.example.seacatering.model.enums.SubscriptionStatus
 import com.example.seacatering.repository.AuthRepository
 import com.example.seacatering.repository.CateringRepository
 import com.google.firebase.Timestamp
@@ -27,8 +29,15 @@ class SubscriptionViewModel @Inject constructor(
     suspend fun hasExistingSubscription(): Boolean {
         val userId = authRepository.getCurrentUserId() ?: return false
         val result = cateringRepository.getUserSubscriptions(userId)
-        return result.isSuccess && result.getOrNull()?.isNotEmpty() == true
+
+        return if (result.isSuccess) {
+            val subscriptions = result.getOrNull().orEmpty()
+            subscriptions.any { it.status == SubscriptionStatus.ACTIVE || it.status == SubscriptionStatus.PAUSED }
+        } else {
+            false
+        }
     }
+
 
     fun addSubscription(dataSubscription: DataSubscription) {
         viewModelScope.launch {

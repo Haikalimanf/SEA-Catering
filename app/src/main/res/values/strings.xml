@@ -69,6 +69,7 @@
     <string name="select_date">Select Date</string>
     <string name="confirm_pause">Confirm Pause</string>
     <string name="logo_calender">logo_calender</string>
+    <string name="you_don_t_have_subscription">You don\'t have any subscription.\nPlease subscribe.</string>
 
     // Contact Us
     <string name="contact_via_whatsapp">Contact via WhatsApp</string>
@@ -140,18 +141,21 @@
         <item>Custom Range</item>
     </string-array>
 
+
     // Menu
     <string name="menu_plan_image">Menu Plan Image</string>
+    <string name="view_detail">View Detail</string>
+
+    // Checkout
+    <string name="allergies">Allergies</string>
+    <string name="plan_selection">Plan Selection</string>
+    <string name="your_subscription_plan">Your Subscription Plan</string>
 
 
     // Image Uri
     <string name="banner_image_home">https://github.com/Haikalimanf/AssetFotoIconSalon/blob/main/banner_image_home.png?raw=true</string>
-
-
-    // String
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="view_detail">View Detail</string>
-
+    <string name="pause_subcription">Pause Subcription</string>
+    <string name="cancel_subsciption">Cancel Subsciption</string>
+    <string name="image_plan_menu">Image Plan Menu</string>
 
 </resources>

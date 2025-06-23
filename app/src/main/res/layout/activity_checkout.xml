@@ -2,22 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:padding="24dp"
     android:background="@android:color/white"
     android:gravity="center_horizontal">
 
-    <!-- Title -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Your Subscription Plan"
+        android:text="@string/your_subscription_plan"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:fontFamily="@font/poppins_bold"
         android:layout_marginBottom="16dp" />
 
-    <!-- Card Border with content -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,7 +25,6 @@
         android:background="@drawable/border_rounded_gray"
         android:elevation="2dp">
 
-        <!-- Username -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -37,7 +35,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Username"
+                android:text="@string/username"
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppins" />
 
@@ -45,12 +43,11 @@
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Jhon Doe"
+                tools:text="Jhon Doe"
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppins" />
         </LinearLayout>
 
-        <!-- Phone Number -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -61,7 +58,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Phone Number"
+                android:text="@string/phone_number"
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppins" />
 
@@ -69,7 +66,7 @@
                 android:id="@+id/noPhone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="08912124342"
+                tools:text="08912124342"
                 android:textColor="@color/gray"
                 android:fontFamily="@font/poppins" />
         </LinearLayout>
@@ -80,7 +77,6 @@
             android:background="@color/gray"
             android:layout_marginVertical="8dp" />
 
-        <!-- Plan Selection -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -91,7 +87,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Plan Selection"
+                android:text="@string/plan_selection"
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppins" />
 
@@ -99,12 +95,11 @@
                 android:id="@+id/plan_selection"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Protein Plan"
+                tools:text="Protein Plan"
                 android:textColor="@color/gray"
                 android:fontFamily="@font/poppins" />
         </LinearLayout>
 
-        <!-- Meal Type -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -115,7 +110,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Meal Type"
+                android:text="@string/meal_plan"
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppins" />
 
@@ -123,7 +118,7 @@
                 android:id="@+id/meal_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Only Breakfast"
+                tools:text="Only Breakfast"
                 android:textColor="@color/gray"
                 android:fontFamily="@font/poppins" />
         </LinearLayout>
@@ -134,11 +129,10 @@
             android:background="@color/gray"
             android:layout_marginVertical="8dp" />
 
-        <!-- Delivery Days -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Delivery Days"
+            android:text="@string/delivery_days"
             android:textColor="@color/black"
             android:fontFamily="@font/poppins" />
 
@@ -146,7 +140,7 @@
             android:id="@+id/delivery_days"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sunday, Tuesday"
+            tools:text="Sunday, Tuesday"
             android:textColor="@color/gray"
             android:fontFamily="@font/poppins"
             android:layout_marginBottom="8dp" />
@@ -157,11 +151,10 @@
             android:background="@color/gray"
             android:layout_marginVertical="8dp" />
 
-        <!-- Allergies -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Allergies"
+            android:text="@string/allergies"
             android:textColor="@color/black"
             android:fontFamily="@font/poppins" />
 
@@ -169,8 +162,29 @@
             android:id="@+id/allergies"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="I have a Sigma"
+            tools:text="I have a Sigma"
             android:textColor="@color/gray"
+            android:fontFamily="@font/poppins" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray"
+            android:layout_marginVertical="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/total_price"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins" />
+
+        <TextView
+            android:id="@+id/totalPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Rp1.700.000"
+            android:textColor="@color/black"
             android:fontFamily="@font/poppins" />
 
     </LinearLayout>
@@ -179,8 +193,8 @@
         android:id="@+id/btn_checkout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Checkout"
+        android:layout_marginTop="18dp"
+        android:text="@string/checkout"
         android:textColor="@android:color/white"
         android:backgroundTint="@color/green"
         android:fontFamily="@font/poppins_bold"
@@ -191,7 +205,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:text="Cancel"
+        android:text="@string/cancel"
         android:textColor="@android:color/white"
         android:fontFamily="@font/poppins_bold"
         android:backgroundTint="@color/red"

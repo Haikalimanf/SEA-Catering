@@ -2,20 +2,18 @@ package com.example.seacatering.ui.user.checkout
 
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.seacatering.R
 import com.example.seacatering.databinding.ActivityCheckoutBinding
-import com.example.seacatering.databinding.ActivityContactUsBinding
 import com.example.seacatering.model.DataCheckout
 import com.example.seacatering.model.DataSubscription
+import com.example.seacatering.ui.user.menu.MenuViewModel
 import com.example.seacatering.ui.user.subcription.SubscriptionViewModel
+import com.example.seacatering.utils.FormatRupiah.formatRupiah
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -47,10 +45,11 @@ class CheckoutActivity : AppCompatActivity() {
         dataCheckout?.let {
             binding.name.text = it.username
             binding.noPhone.text = it.phone_number
-            binding.planSelection.text = it.meal_plan
+            binding.planSelection.text = it.meal_plan.joinToString(", ")
             binding.mealType.text = it.plan_type_name
             binding.deliveryDays.text = it.delivery_days.joinToString(", ")
             binding.allergies.text = it.allergies
+            binding.totalPrice.text = formatRupiah(it.total_price)
         }
     }
 
@@ -73,31 +72,38 @@ class CheckoutActivity : AppCompatActivity() {
                     return@launch
                 }
 
-                subscriptionViewModel.addSubscription(data)
+                try {
+                    subscriptionViewModel.addSubscription(data)
 
-                val checkout = DataCheckout(
-                    id = "",
-                    userId = data.userId,
-                    name = data.username,
-                    phone_number = data.phone_number,
-                    plan_id = data.plan_id,
-                    plan_type_name = data.plan_type_name,
-                    meal_plan = data.meal_plan,
-                    delivery_days = data.delivery_days,
-                    allergies = data.allergies
-                )
+                    val checkout = DataCheckout(
+                        id = "",
+                        userId = data.userId,
+                        name = data.username,
+                        phone_number = data.phone_number,
+                        plan_id = data.plan_id,
+                        plan_type_name = data.plan_type_name,
+                        meal_plan = data.meal_plan,
+                        delivery_days = data.delivery_days,
+                        allergies = data.allergies,
+                        price = data.total_price
+                    )
 
-                checkoutViewModel.addCheckOut(checkout)
+                    checkoutViewModel.addCheckOut(checkout)
 
-                Toast.makeText(
-                    this@CheckoutActivity,
-                    "Checkout and subscription successful!",
-                    Toast.LENGTH_SHORT
-                ).show()
-                finish()
+                    Toast.makeText(
+                        this@CheckoutActivity,
+                        "Checkout and subscription successful!\nTotal: ${formatRupiah(data.total_price)}",
+                        Toast.LENGTH_LONG
+                    ).show()
+                    finish()
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    Toast.makeText(this@CheckoutActivity, "Failed to load plan data", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }
+
 
     override fun onSupportNavigateUp(): Boolean {
         finish()

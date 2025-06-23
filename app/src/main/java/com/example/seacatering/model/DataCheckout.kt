@@ -10,8 +10,9 @@ data class DataCheckout(
     val name: String = "",
     val phone_number: String = "",
     val plan_id: Int = 0,
+    val price: Int = 0,
     val plan_type_name: String = "",
-    val meal_plan: String = "",
+    val meal_plan: List<String> = emptyList(),
     val delivery_days: List<String> = emptyList(),
     val allergies: String= ""
 ) : Parcelable
