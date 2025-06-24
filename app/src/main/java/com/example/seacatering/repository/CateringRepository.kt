@@ -7,6 +7,7 @@ import com.example.seacatering.model.DataSubscription
 import com.example.seacatering.model.DataTestimonial
 import com.example.seacatering.model.DataUser
 import com.example.seacatering.model.enums.SubscriptionStatus
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
@@ -162,4 +163,36 @@ class CateringRepository @Inject constructor(
             Result.failure(e)
         }
     }
+
+    suspend fun getLatestCancelledSubscription(
+        userId: String,
+        currentTime: Timestamp = Timestamp.now()
+    ): DataSubscription? {
+        val result = getUserSubscriptions(userId)
+        if (!result.isSuccess) return null
+
+        val subscriptions = result.getOrNull().orEmpty()
+
+        return subscriptions
+            .filter { it.status == SubscriptionStatus.CANCELED && it.end_date.toDate().after(currentTime.toDate()) }
+            .sortedByDescending { it.end_date }
+            .firstOrNull()
+    }
+
+    suspend fun canUserSubscribe(userId: String): Boolean {
+        val result = getUserSubscriptions(userId)
+
+        if (!result.isSuccess) return false
+
+        val subscriptions = result.getOrNull().orEmpty()
+
+        val hasActiveOrPaused = subscriptions.any {
+            it.status == SubscriptionStatus.ACTIVE || it.status == SubscriptionStatus.PAUSED
+        }
+
+        return !hasActiveOrPaused
+    }
+
+
+
 }

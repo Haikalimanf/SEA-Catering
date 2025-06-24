@@ -43,7 +43,6 @@ class CheckoutViewModel @Inject constructor(
         }
     }
 
-
     fun fetchUserCheckout() {
         val userId = authRepository.getCurrentUserId() ?: return
         viewModelScope.launch {

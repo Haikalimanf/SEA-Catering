@@ -15,9 +15,13 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.seacatering.R
 import com.example.seacatering.databinding.ActivityLoginBinding
+import com.example.seacatering.model.enums.UserRole
 import com.example.seacatering.ui.MainActivity
 import com.example.seacatering.ui.auth.register.RegisterActivity
 import com.example.seacatering.model.state.AuthState
+import com.example.seacatering.model.state.RoleResultState
+import com.example.seacatering.ui.admin.dashboard.DashboardAdminActivity
+import com.example.seacatering.ui.user.profile.ProfileViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -35,6 +39,7 @@ class LoginActivity : AppCompatActivity() {
 
         setupClickableSignUp()
         observeLoginState()
+        observeRoleState()
         btnLogin()
     }
 
@@ -51,6 +56,37 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    private fun observeRoleState() {
+        lifecycleScope.launchWhenStarted {
+            viewModel.roleState.collect { state ->
+                when (state) {
+                    is RoleResultState.Loading -> {
+                        // Optional: tampilkan loading indikator kalau mau
+                    }
+                    is RoleResultState.Success -> {
+                        binding.progressBar.visibility = View.GONE
+                        binding.btnLogin.isEnabled = true
+
+                        val intent = when (state.role) {
+                            UserRole.ADMIN -> Intent(this@LoginActivity, DashboardAdminActivity::class.java)
+                            UserRole.USER -> Intent(this@LoginActivity, MainActivity::class.java)
+                        }
+
+                        startActivity(intent)
+                        finish()
+                    }
+                    is RoleResultState.NotLoggedIn,
+                    is RoleResultState.Error -> {
+                        binding.progressBar.visibility = View.GONE
+                        binding.btnLogin.isEnabled = true
+                        Toast.makeText(this@LoginActivity, "Failed to determine user role", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
+    }
+
+
 
     private fun observeLoginState() {
         lifecycleScope.launchWhenStarted {
@@ -61,10 +97,7 @@ class LoginActivity : AppCompatActivity() {
                         binding.btnLogin.isEnabled = false
                     }
                     is AuthState.Success -> {
-                        binding.progressBar.visibility = View.GONE
-                        binding.btnLogin.isEnabled = true
-                        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-                        finish()
+                        viewModel.checkUserRole()
                     }
                     is AuthState.Error -> {
                         binding.progressBar.visibility = View.GONE
@@ -79,6 +112,7 @@ class LoginActivity : AppCompatActivity() {
             }
         }
     }
+
 
 
     private fun setupClickableSignUp() {

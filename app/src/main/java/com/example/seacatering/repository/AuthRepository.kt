@@ -2,6 +2,7 @@ package com.example.seacatering.repository
 
 import com.example.seacatering.model.DataUser
 import com.example.seacatering.model.auth.AuthOutcome
+import com.example.seacatering.model.enums.UserRole
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -11,7 +12,8 @@ import javax.inject.Singleton
 
 @Singleton
 class AuthRepository @Inject constructor(
-    private val firebaseAuth: FirebaseAuth
+    private val firebaseAuth: FirebaseAuth,
+    private val firestore: FirebaseFirestore
 ) {
     suspend fun login(email: String, password: String): Result<AuthOutcome> {
         return try {
@@ -48,5 +50,21 @@ class AuthRepository @Inject constructor(
     fun logout() {
         firebaseAuth.signOut()
     }
+
+    suspend fun getCurrentUserRole(): UserRole? {
+        return try {
+            val userId = firebaseAuth.currentUser?.uid ?: return null
+            val snapshot = firestore.collection("users")
+                .document(userId)
+                .get()
+                .await()
+
+            val roleString = snapshot.getString("role") ?: return null
+            UserRole.valueOf(roleString.uppercase())
+        } catch (e: Exception) {
+            null
+        }
+    }
+
 
 }

@@ -2,6 +2,7 @@ package com.example.seacatering.ui.opening
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -61,6 +62,7 @@ class SplashScreenFragment : Fragment() {
                         activity?.finish()
                     }
                     is RoleResultState.Success -> {
+                        Log.d("role user", "observeRoleState: ${state.role}")
                         val intent = when (state.role) {
                             UserRole.ADMIN -> Intent(requireContext(), DashboardAdminActivity::class.java)
                             UserRole.USER -> Intent(requireContext(), MainActivity::class.java)

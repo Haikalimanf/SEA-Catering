@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.seacatering.model.DataCheckout
 import com.example.seacatering.model.DataSubscription
+import com.example.seacatering.model.enums.SubscriptionStatus
 import com.example.seacatering.repository.AuthRepository
 import com.example.seacatering.repository.CateringRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -33,11 +34,16 @@ class DashboardViewModel @Inject constructor(
         viewModelScope.launch {
             val result = cateringRepository.getUserSubscriptions(userId)
             if (result.isSuccess) {
-                val latestCheckout = result.getOrNull()?.lastOrNull()
-                _subcriptionData.value = latestCheckout
+                val subscriptions = result.getOrNull().orEmpty()
+                val latestActiveOrPaused = subscriptions
+                    .filter { it.status == SubscriptionStatus.ACTIVE || it.status == SubscriptionStatus.PAUSED }
+                    .maxByOrNull { it.end_date }
+
+                _subcriptionData.value = latestActiveOrPaused
             }
         }
     }
+
 
     fun cancelUserSubscription(subscriptionId: String) {
         viewModelScope.launch {

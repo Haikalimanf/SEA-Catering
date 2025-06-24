@@ -18,6 +18,7 @@ data class DataSubscription(
     val allergies: String = "",
     val total_price: Int = 0,
     val status: SubscriptionStatus = SubscriptionStatus.ACTIVE,
+    val created_at: Timestamp = Timestamp.now(),
     val end_date: Timestamp = Timestamp.now(),
     val pause_periode_start: Timestamp? = null,
     val pause_periode_end: Timestamp? = null,

@@ -1,12 +1,8 @@
 package com.example.seacatering.ui.user.subcription
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.seacatering.model.DataCheckout
 import com.example.seacatering.model.DataSubscription
-import com.example.seacatering.model.DataTestimonial
-import com.example.seacatering.model.enums.SubscriptionStatus
 import com.example.seacatering.repository.AuthRepository
 import com.example.seacatering.repository.CateringRepository
 import com.google.firebase.Timestamp
@@ -26,33 +22,42 @@ class SubscriptionViewModel @Inject constructor(
     private val _subscriptions = MutableStateFlow<List<DataSubscription>>(emptyList())
     val subscriptions: StateFlow<List<DataSubscription>> = _subscriptions
 
-    suspend fun hasExistingSubscription(): Boolean {
-        val userId = authRepository.getCurrentUserId() ?: return false
-        val result = cateringRepository.getUserSubscriptions(userId)
-
-        return if (result.isSuccess) {
-            val subscriptions = result.getOrNull().orEmpty()
-            subscriptions.any { it.status == SubscriptionStatus.ACTIVE || it.status == SubscriptionStatus.PAUSED }
-        } else {
-            false
-        }
-    }
-
+    private val _canSubscribe = MutableStateFlow<Boolean>(true)
+    val canSubscribe: StateFlow<Boolean> = _canSubscribe
 
     fun addSubscription(dataSubscription: DataSubscription) {
         viewModelScope.launch {
-            val userId = authRepository.getCurrentUserId()
-            if (userId != null) {
-                val newSubscription = dataSubscription.copy(
-                    id = UUID.randomUUID().toString(),
-                    userId = userId
-                )
+            val userId = authRepository.getCurrentUserId() ?: return@launch
+            val now = Timestamp.now()
 
-                val result = cateringRepository.saveSubscription(newSubscription)
-                if (result.isSuccess) {
-                    _subscriptions.value = _subscriptions.value + newSubscription
-                }
+            val previousCancelled = cateringRepository.getLatestCancelledSubscription(userId)
+
+            var newSubscription = dataSubscription.copy(
+                id = UUID.randomUUID().toString(),
+                userId = userId
+            )
+
+            if (previousCancelled != null && now < previousCancelled.end_date) {
+                newSubscription = newSubscription.copy(
+                    reactivated_at = now,
+                )
+            }
+
+            val result = cateringRepository.saveSubscription(newSubscription)
+            if (result.isSuccess) {
+                _subscriptions.value += newSubscription
             }
         }
     }
+
+    fun checkUserCanSubscribe() {
+        viewModelScope.launch {
+            val userId = authRepository.getCurrentUserId() ?: return@launch
+            val result = cateringRepository.canUserSubscribe(userId)
+            _canSubscribe.value = result
+        }
+    }
+
 }
+
+

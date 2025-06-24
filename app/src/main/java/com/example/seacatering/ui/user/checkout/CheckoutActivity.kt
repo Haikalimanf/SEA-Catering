@@ -1,6 +1,7 @@
 package com.example.seacatering.ui.user.checkout
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +16,7 @@ import com.example.seacatering.utils.FormatRupiah.formatRupiah
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import java.util.UUID
 
 @AndroidEntryPoint
 class CheckoutActivity : AppCompatActivity() {
@@ -32,16 +34,19 @@ class CheckoutActivity : AppCompatActivity() {
         _binding = ActivityCheckoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+        setupUI()
+        setupCheckoutAction()
+        subscriptionViewModel.checkUserCanSubscribe()
+    }
+
+
+    private fun setupUI() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = getString(R.string.checkout)
 
         dataCheckout = intent.getParcelableExtra("checkout_data")
 
-        setupUI()
-        setupCheckoutAction()
-    }
-
-    private fun setupUI() {
         dataCheckout?.let {
             binding.name.text = it.username
             binding.noPhone.text = it.phone_number
@@ -62,44 +67,41 @@ class CheckoutActivity : AppCompatActivity() {
             }
 
             lifecycleScope.launch {
-                val alreadySubscribed = subscriptionViewModel.hasExistingSubscription()
-                if (alreadySubscribed) {
+                val canSubscribe = subscriptionViewModel.canSubscribe.value
+
+                if (!canSubscribe) {
                     Toast.makeText(
                         this@CheckoutActivity,
-                        "You have already subscribed. Only one active subscription is allowed.",
+                        "You already have an active or paused subscription.",
                         Toast.LENGTH_LONG
                     ).show()
                     return@launch
                 }
 
-                try {
-                    subscriptionViewModel.addSubscription(data)
+                subscriptionViewModel.addSubscription(data)
 
-                    val checkout = DataCheckout(
-                        id = "",
-                        userId = data.userId,
-                        name = data.username,
-                        phone_number = data.phone_number,
-                        plan_id = data.plan_id,
-                        plan_type_name = data.plan_type_name,
-                        meal_plan = data.meal_plan,
-                        delivery_days = data.delivery_days,
-                        allergies = data.allergies,
-                        price = data.total_price
-                    )
+                val checkout = DataCheckout(
+                    id = UUID.randomUUID().toString(),
+                    userId = data.userId,
+                    name = data.username,
+                    phone_number = data.phone_number,
+                    plan_id = data.plan_id,
+                    plan_type_name = data.plan_type_name,
+                    meal_plan = data.meal_plan,
+                    delivery_days = data.delivery_days,
+                    allergies = data.allergies,
+                    price = data.total_price
+                )
 
-                    checkoutViewModel.addCheckOut(checkout)
+                checkoutViewModel.addCheckOut(checkout)
 
-                    Toast.makeText(
-                        this@CheckoutActivity,
-                        "Checkout and subscription successful!\nTotal: ${formatRupiah(data.total_price)}",
-                        Toast.LENGTH_LONG
-                    ).show()
-                    finish()
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                    Toast.makeText(this@CheckoutActivity, "Failed to load plan data", Toast.LENGTH_SHORT).show()
-                }
+                Toast.makeText(
+                    this@CheckoutActivity,
+                    "Checkout and subscription successful!\nTotal: ${formatRupiah(data.total_price)}",
+                    Toast.LENGTH_LONG
+                ).show()
+
+                finish()
             }
         }
     }
