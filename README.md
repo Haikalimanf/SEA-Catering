@@ -10,20 +10,19 @@ SEA Catering mengusung konsep berlangganan (subscription) dengan fitur fleksibel
 
 ### Pengguna Biasa
 - **User Authentication & Authorization** - Login/register dengan email atau Google account
-<img src="https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/login_sea_catering.jpg" alt="Deskripsi gambar" height="450" style="margin-right: 10px;">
-<img src="https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/register_sea_catering.jpg" alt="Deskripsi gambar" height="450">
+
+<img src="https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/login_sea_catering.jpg" alt="Deskripsi gambar" height="450" style="margin-right: 10px;"><img src="https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/register_sea_catering.jpg" alt="Deskripsi gambar" height="450">
 
 - **Interactive Navigation** - Antarmuka yang mudah digunakan untuk menjelajahi paket katering
-<img src="https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/home_sea_catering.jpg" alt="Deskripsi gambar" height="450" style="margin-right: 10px;">
-<img src="https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/menu_sea_catering.jpg" alt="Deskripsi gambar" height="450" style="margin-right: 10px;">
-<img src="https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/subcription_sea_catering.jpg" alt="Deskripsi gambar" height="450">
+
+<img src="https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/home_sea_catering.jpg" alt="Deskripsi gambar" height="450" style="margin-right: 10px;"><img src="https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/menu_sea_catering.jpg" alt="Deskripsi gambar" height="450" style="margin-right: 10px;"><img src="https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/subcription_sea_catering.jpg" alt="Deskripsi gambar" height="450">
 
 - **Add Testimonial** - Memberikan ulasan dan rating terhadap layanan yang diterima
 <img src="https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/add_review_sea_catering.jpg" alt="Deskripsi gambar" height="450">
 
 - **Create, Pause, and Cancel Subscription** - Fleksibilitas dalam mengelola langganan katering
-<img src="https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/subcription_sea_catering.jpg" alt="Deskripsi gambar" height="450">
-<img src="https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/dashboard_user_have_subs_sea_catering.jpg" alt="Deskripsi gambar" height="450">
+
+<img src="https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/subcription_sea_catering.jpg" alt="Deskripsi gambar" height="450" style="margin-right: 10px;"><img src="https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/dashboard_user_have_subs_sea_catering.jpg" alt="Deskripsi gambar" height="450">
 
 ### Admin
 - **Admin Dashboard** - Monitoring new subscriptions, Monthly Recurring Revenue (MRR), reactivations, dan subscription growth
@@ -60,18 +59,21 @@ cd SEA-Catering
 4. Aktifkan Firebase Authentication (Email/Password dan Google Sign-In)
 5. Buat database Firestore dengan aturan keamanan yang sesuai
 
-### Running the App
+### Running the App With Android Studio
 1. Buka project dengan Android Studio
 2. Sync project dengan Gradle files
 3. Pilih perangkat atau emulator Android
 4. Klik tombol Run
 
-### Use Emulator Setup
+### Use Emulator Setup With Android Studio
 1. Di Android Studio, buka Device Manager
 2. Pilih "Create Device"
 3. Pilih perangkat yang diinginkan (misal: Pixel 6)
 4. Pilih sistem Android (rekomendasi: Android 13.0 atau lebih baru)
 5. Selesaikan setup dan jalankan emulator
+
+### Download App if you want running the app with Android Studio or use Emulator
+- [Link Drive Download App](https://drive.google.com/drive/folders/1GKUBJFreWfvS_PmzY6zampdeVcz676KB?usp=sharing)
 
 ## Project Structure
 ```
