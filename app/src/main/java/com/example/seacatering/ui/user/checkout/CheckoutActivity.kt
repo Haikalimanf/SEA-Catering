@@ -35,6 +35,14 @@ class CheckoutActivity : AppCompatActivity() {
         setupUI()
         setupCheckoutAction()
         subscriptionViewModel.checkUserCanSubscribe()
+        cancelCheckout()
+    }
+
+    private fun cancelCheckout() {
+        binding.btnCancel.setOnClickListener {
+            Toast.makeText(this, "Checkout cancelled", Toast.LENGTH_SHORT).show()
+            finish()
+        }
     }
 
 
