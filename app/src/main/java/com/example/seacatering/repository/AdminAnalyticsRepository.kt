@@ -19,9 +19,8 @@ class AdminAnalyticsRepository @Inject constructor(
     private suspend fun getNewSubscriptions(start: Timestamp, end: Timestamp): Result<Int> {
         return try {
             val snapshot = firestore.collection("subscriptions")
-                .whereEqualTo("status", SubscriptionStatus.ACTIVE.name)
-                .whereLessThanOrEqualTo("created_at", start)
-                .whereGreaterThanOrEqualTo("created_at", end)
+                .whereGreaterThanOrEqualTo("created_at", start)
+                .whereLessThanOrEqualTo("created_at", end)
                 .get()
                 .await()
 
@@ -51,8 +50,6 @@ class AdminAnalyticsRepository @Inject constructor(
             Result.failure(e)
         }
     }
-
-
 
     suspend fun getReactivations(
         periodStart: Timestamp,
@@ -92,7 +89,7 @@ class AdminAnalyticsRepository @Inject constructor(
 
     suspend fun getDashboardAnalytics(start: Timestamp, end: Timestamp): Result<DataAnalyticsResult> {
         return try {
-            val newSubs = getNewSubscriptions(start, end)
+            val newSubs = getNewSubscriptions(start, end).getOrDefault(0)
             val mrr = getRecurringRevenue(start, end).getOrDefault(0)
             val reactivations = getReactivations(start, end).getOrDefault(0)
             val growth = getSubscriptionActive().getOrDefault(0)
@@ -101,7 +98,7 @@ class AdminAnalyticsRepository @Inject constructor(
 
             Result.success(
                 DataAnalyticsResult(
-                    newSubscriptions = 1,
+                    newSubscriptions = newSubs,
                     recurringRevenue = formatRupiah(mrr),
                     reactivations = reactivations,
                     subscriptionActive = growth
