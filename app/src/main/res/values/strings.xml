@@ -68,6 +68,8 @@
     <string name="desc_bottom_sheet">Select the date range during which you do not want to receive deliveries.</string>
     <string name="select_date">Select Date</string>
     <string name="confirm_pause">Confirm Pause</string>
+    <string name="pause_subcription">Pause Subcription</string>
+    <string name="cancel_subsciption">Cancel Subsciption</string>
     <string name="logo_calender">logo_calender</string>
     <string name="you_don_t_have_subscription">You don\'t have any subscription.\nPlease subscribe.</string>
 
@@ -140,6 +142,8 @@
         <item>This Month</item>
         <item>Custom Range</item>
     </string-array>
+    <string name="create_report">Create Report</string>
+
 
 
     // Menu
@@ -154,8 +158,5 @@
 
     // Image Uri
     <string name="banner_image_home">https://github.com/Haikalimanf/AssetFotoIconSalon/blob/main/banner_image_home.png?raw=true</string>
-    <string name="pause_subcription">Pause Subcription</string>
-    <string name="cancel_subsciption">Cancel Subsciption</string>
     <string name="image_plan_menu">Image Plan Menu</string>
-
 </resources>

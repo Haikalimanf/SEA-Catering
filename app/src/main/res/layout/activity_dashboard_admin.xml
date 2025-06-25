@@ -118,24 +118,16 @@
             </LinearLayout>
         </GridLayout>
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_create_report"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_medium"
-            android:text="@string/net_subscription_growth"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/tvPersenNetSubs"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/_15"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:fontFamily="@font/poppins_bold"
-            android:textColor="@color/black"
-            android:layout_marginBottom="4dp" />
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_rounded"
+            android:text="@string/create_report"
+            android:backgroundTint="@color/green"
+            android:textColor="@android:color/white"
+        />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_logout"

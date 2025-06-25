@@ -1,25 +1,40 @@
 package com.example.seacatering.ui.admin.dashboard
 
 import android.app.AlertDialog
+import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.Paint
+import android.graphics.Typeface
+import android.graphics.pdf.PdfDocument
 import android.os.Bundle
-import android.util.Log
+import android.os.Environment
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.FileProvider
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.seacatering.databinding.ActivityDashboardAdminBinding
+import com.example.seacatering.model.DataAnalyticsResult
 import com.example.seacatering.ui.auth.login.LoginActivity
 import com.example.seacatering.ui.user.profile.ProfileViewModel
+import com.example.seacatering.utils.FormatRupiah.formatRupiah
+import com.example.seacatering.utils.PdfReportGenerator
 import dagger.hilt.android.AndroidEntryPoint
 import java.time.LocalDate
 import java.time.ZoneId
 import com.google.firebase.Timestamp
 import kotlinx.coroutines.launch
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
+import java.text.SimpleDateFormat
 import java.util.Date
+import java.util.Locale
 
 @AndroidEntryPoint
 class DashboardAdminActivity : AppCompatActivity() {
@@ -30,6 +45,10 @@ class DashboardAdminActivity : AppCompatActivity() {
     private val dashboardViewModel: AdminDashboardViewModel by viewModels()
     private val profileViewModel: ProfileViewModel by viewModels()
 
+    private var currentStartDate: Timestamp? = null
+    private var currentEndDate: Timestamp? = null
+
+    private var latestAnalyticsResult: DataAnalyticsResult? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +58,7 @@ class DashboardAdminActivity : AppCompatActivity() {
         setupDateRangeSelector()
         triggerSetDate()
         logOut()
+        createReport()
     }
 
     private fun triggerSetDate() {
@@ -83,18 +103,21 @@ class DashboardAdminActivity : AppCompatActivity() {
     }
 
     private fun fetchDataSubcription(start: Timestamp, end: Timestamp) {
+        currentStartDate = start
+        currentEndDate = end
+
         dashboardViewModel.fetchDashboardAnalytics(start, end)
         lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                dashboardViewModel.dataAnalytics.collect { result ->
-                    if (result != null) {
-                        binding.newSubscriptions.text = result.newSubscriptions.toString()
-                        binding.totalRevenue.text = result.recurringRevenue
-                        binding.totalActiveSubscribers.text = result.subscriptionActive.toString()
-                        binding.reactivatedSubscriptions.text = result.reactivations.toString()
-                    }
+            dashboardViewModel.dataAnalytics.collect { result ->
+                if (result != null) {
+                    latestAnalyticsResult = result
+                    binding.newSubscriptions.text = result.newSubscriptions.toString()
+                    binding.totalRevenue.text = formatRupiah(result.recurringRevenue)
+                    binding.totalActiveSubscribers.text = result.subscriptionActive.toString()
+                    binding.reactivatedSubscriptions.text = result.reactivations.toString()
                 }
             }
+
         }
     }
 
@@ -122,6 +145,28 @@ class DashboardAdminActivity : AppCompatActivity() {
             }
         }
     }
+
+    fun createReport() {
+        binding.btnCreateReport.setOnClickListener {
+            val start = currentStartDate
+            val end = currentEndDate
+            val data = latestAnalyticsResult
+
+            if (start != null && end != null && data != null) {
+                val file = PdfReportGenerator.generateSubscriptionReport(this, start, end, data)
+                if (file != null) {
+                    PdfReportGenerator.openPdf(this, file)
+                } else {
+                    Toast.makeText(this, "Gagal membuat PDF", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                Toast.makeText(this, "Data belum siap untuk membuat laporan", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+    }
+
+
 
     companion object {
         private val DATE_OPTIONS = listOf(

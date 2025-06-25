@@ -94,12 +94,10 @@ class AdminAnalyticsRepository @Inject constructor(
             val reactivations = getReactivations(start, end).getOrDefault(0)
             val growth = getSubscriptionActive().getOrDefault(0)
 
-            Log.d("newSubs", "getDashboardAnalytics: $newSubs")
-
             Result.success(
                 DataAnalyticsResult(
                     newSubscriptions = newSubs,
-                    recurringRevenue = formatRupiah(mrr),
+                    recurringRevenue = mrr,
                     reactivations = reactivations,
                     subscriptionActive = growth
                 )
