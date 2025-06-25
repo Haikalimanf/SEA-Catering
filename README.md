@@ -10,13 +10,26 @@ SEA Catering mengusung konsep berlangganan (subscription) dengan fitur fleksibel
 
 ### Pengguna Biasa
 - **User Authentication & Authorization** - Login/register dengan email atau Google account
+<img src="https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/login_sea_catering.jpg" alt="Deskripsi gambar" height="450" style="margin-right: 10px;">
+<img src="https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/register_sea_catering.jpg" alt="Deskripsi gambar" height="450">
+
 - **Interactive Navigation** - Antarmuka yang mudah digunakan untuk menjelajahi paket katering
+<img src="https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/home_sea_catering.jpg" alt="Deskripsi gambar" height="450" style="margin-right: 10px;">
+<img src="https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/menu_sea_catering.jpg" alt="Deskripsi gambar" height="450" style="margin-right: 10px;">
+<img src="https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/subcription_sea_catering.jpg" alt="Deskripsi gambar" height="450">
+
 - **Add Testimonial** - Memberikan ulasan dan rating terhadap layanan yang diterima
+<img src="https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/add_review_sea_catering.jpg" alt="Deskripsi gambar" height="450">
+
 - **Create, Pause, and Cancel Subscription** - Fleksibilitas dalam mengelola langganan katering
+<img src="https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/subcription_sea_catering.jpg" alt="Deskripsi gambar" height="450">
+<img src="https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/dashboard_user_have_subs_sea_catering.jpg" alt="Deskripsi gambar" height="450">
 
 ### Admin
 - **Admin Dashboard** - Monitoring new subscriptions, Monthly Recurring Revenue (MRR), reactivations, dan subscription growth
-- **Create Report PDF** - Pembuatan laporan dalam format PDF untuk analisis bisnis
+<img src="https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/admin_dashboard_sea_catering.jpg" alt="Deskripsi gambar" height="450">
+
+- **Create Report PDF** - Pembuatan laporan dalam format PDF
 
 ## Architecture & Tech Stack
 
