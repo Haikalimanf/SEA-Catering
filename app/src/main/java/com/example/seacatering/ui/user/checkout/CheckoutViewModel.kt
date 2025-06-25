@@ -1,6 +1,5 @@
 package com.example.seacatering.ui.user.checkout
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.seacatering.model.DataCheckout

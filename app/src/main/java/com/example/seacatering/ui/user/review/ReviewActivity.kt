@@ -2,15 +2,10 @@ package com.example.seacatering.ui.user.review
 
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.seacatering.R
-import com.example.seacatering.databinding.ActivityContactUsBinding
-import com.example.seacatering.databinding.ActivityDashboardBinding
 import com.example.seacatering.databinding.ActivityReviewBinding
 import com.example.seacatering.utils.DialogUtil
 import dagger.hilt.android.AndroidEntryPoint

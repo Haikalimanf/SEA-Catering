@@ -16,12 +16,11 @@ import androidx.lifecycle.lifecycleScope
 import com.example.seacatering.R
 import com.example.seacatering.databinding.ActivityLoginBinding
 import com.example.seacatering.model.enums.UserRole
-import com.example.seacatering.ui.MainActivity
-import com.example.seacatering.ui.auth.register.RegisterActivity
 import com.example.seacatering.model.state.AuthState
 import com.example.seacatering.model.state.RoleResultState
+import com.example.seacatering.ui.MainActivity
 import com.example.seacatering.ui.admin.dashboard.DashboardAdminActivity
-import com.example.seacatering.ui.user.profile.ProfileViewModel
+import com.example.seacatering.ui.auth.register.RegisterActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -61,7 +60,6 @@ class LoginActivity : AppCompatActivity() {
             viewModel.roleState.collect { state ->
                 when (state) {
                     is RoleResultState.Loading -> {
-                        // Optional: tampilkan loading indikator kalau mau
                     }
                     is RoleResultState.Success -> {
                         binding.progressBar.visibility = View.GONE

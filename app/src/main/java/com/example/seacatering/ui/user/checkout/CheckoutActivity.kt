@@ -1,7 +1,6 @@
 package com.example.seacatering.ui.user.checkout
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -10,11 +9,9 @@ import com.example.seacatering.R
 import com.example.seacatering.databinding.ActivityCheckoutBinding
 import com.example.seacatering.model.DataCheckout
 import com.example.seacatering.model.DataSubscription
-import com.example.seacatering.ui.user.menu.MenuViewModel
 import com.example.seacatering.ui.user.subcription.SubscriptionViewModel
 import com.example.seacatering.utils.FormatRupiah.formatRupiah
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import java.util.UUID
 

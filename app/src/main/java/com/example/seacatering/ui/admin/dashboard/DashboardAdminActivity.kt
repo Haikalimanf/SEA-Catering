@@ -1,40 +1,25 @@
 package com.example.seacatering.ui.admin.dashboard
 
 import android.app.AlertDialog
-import android.content.ActivityNotFoundException
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.Paint
-import android.graphics.Typeface
-import android.graphics.pdf.PdfDocument
 import android.os.Bundle
-import android.os.Environment
-import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.FileProvider
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import com.example.seacatering.databinding.ActivityDashboardAdminBinding
 import com.example.seacatering.model.DataAnalyticsResult
 import com.example.seacatering.ui.auth.login.LoginActivity
 import com.example.seacatering.ui.user.profile.ProfileViewModel
 import com.example.seacatering.utils.FormatRupiah.formatRupiah
 import com.example.seacatering.utils.PdfReportGenerator
+import com.google.firebase.Timestamp
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.ZoneId
-import com.google.firebase.Timestamp
-import kotlinx.coroutines.launch
-import java.io.File
-import java.io.FileOutputStream
-import java.io.IOException
-import java.text.SimpleDateFormat
 import java.util.Date
-import java.util.Locale
 
 @AndroidEntryPoint
 class DashboardAdminActivity : AppCompatActivity() {
@@ -84,11 +69,11 @@ class DashboardAdminActivity : AppCompatActivity() {
             val now = LocalDate.now()
 
             val (startDate, endDate) = when (selectedOption) {
-                "Hari ini" -> Pair(now, now)
-                "7 hari terakhir" -> Pair(now.minusDays(6), now)
-                "30 hari terakhir" -> Pair(now.minusDays(29), now)
-                "Bulan ini" -> Pair(now.withDayOfMonth(1), now)
-                "Tahun ini" -> Pair(now.withDayOfYear(1), now)
+                "Today" -> Pair(now, now)
+                "Last 7 days" -> Pair(now.minusDays(6), now)
+                "Last 30 days" -> Pair(now.minusDays(29), now)
+                "This month" -> Pair(now.withDayOfMonth(1), now)
+                "This year" -> Pair(now.withDayOfYear(1), now)
                 else -> Pair(now, now)
             }
 
@@ -157,24 +142,22 @@ class DashboardAdminActivity : AppCompatActivity() {
                 if (file != null) {
                     PdfReportGenerator.openPdf(this, file)
                 } else {
-                    Toast.makeText(this, "Gagal membuat PDF", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Failed to create PDF", Toast.LENGTH_SHORT).show()
                 }
             } else {
-                Toast.makeText(this, "Data belum siap untuk membuat laporan", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Data is not yet ready for reporting", Toast.LENGTH_SHORT).show()
             }
         }
 
     }
 
-
-
     companion object {
         private val DATE_OPTIONS = listOf(
-            "Hari ini",
-            "7 hari terakhir",
-            "30 hari terakhir",
-            "Bulan ini",
-            "Tahun ini"
+            "Today",
+            "Last 7 days",
+            "Last 30 days",
+            "This month",
+            "This year"
         )
     }
 

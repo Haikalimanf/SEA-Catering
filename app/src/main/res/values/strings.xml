@@ -157,6 +157,8 @@
 
 
     // Image Uri
-    <string name="banner_image_home">https://github.com/Haikalimanf/AssetFotoIconSalon/blob/main/banner_image_home.png?raw=true</string>
+    <string name="profile_image_default">https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/default_avatar_man.jpg</string>
+    <string name="banner_image_home">https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/banner_image_home.png</string>
     <string name="image_plan_menu">Image Plan Menu</string>
+    <string name="diet_plan_image">Diet Plan Image</string>
 </resources>

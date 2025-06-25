@@ -1,7 +1,6 @@
 package com.example.seacatering.ui.user.dashboard
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -13,7 +12,6 @@ import com.bumptech.glide.Glide
 import com.example.seacatering.R
 import com.example.seacatering.databinding.ActivityDashboardBinding
 import com.example.seacatering.model.enums.SubscriptionStatus
-import com.example.seacatering.ui.user.checkout.CheckoutViewModel
 import com.example.seacatering.ui.user.dashboard.bottomsheet.PauseSubscriptionBottomSheet
 import com.example.seacatering.ui.user.menu.MenuViewModel
 import com.example.seacatering.ui.user.profile.ProfileViewModel

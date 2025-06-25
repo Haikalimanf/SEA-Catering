@@ -1,11 +1,9 @@
 package com.example.seacatering.repository
 
-import android.util.Log
 import com.example.seacatering.model.DataAnalyticsResult
 import com.example.seacatering.model.DataSubscription
 import com.example.seacatering.model.enums.SubscriptionStatus
 import com.google.firebase.Timestamp
-import com.example.seacatering.utils.FormatRupiah.formatRupiah
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject

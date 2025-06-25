@@ -4,22 +4,13 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.example.seacatering.R
-import com.example.seacatering.databinding.ActivityContactUsBinding
-import com.example.seacatering.databinding.ActivityDashboardBinding
 import com.example.seacatering.databinding.ActivityProfileBinding
 import com.example.seacatering.ui.auth.login.LoginActivity
 import com.example.seacatering.utils.ImageUtils
@@ -59,7 +50,7 @@ class ProfileActivity : AppCompatActivity() {
                     binding.edtEmail.setText(user.email)
                     binding.edtAddres.setText(user.address)
 
-                    val defaultUrl = getString(R.string.banner_image_home)
+                    val defaultUrl = getString(R.string.profile_image_default)
 
                     val imageUrl = user.imageUri?.takeIf { it.isNotEmpty() } ?: defaultUrl
 

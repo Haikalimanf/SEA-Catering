@@ -3,7 +3,6 @@ package com.example.seacatering.repository
 import com.example.seacatering.model.DataUser
 import com.example.seacatering.model.auth.AuthOutcome
 import com.example.seacatering.model.enums.UserRole
-import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await

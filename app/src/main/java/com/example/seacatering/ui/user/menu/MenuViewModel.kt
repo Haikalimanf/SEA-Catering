@@ -1,7 +1,5 @@
 package com.example.seacatering.ui.user.menu
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.seacatering.model.DataMealPlan

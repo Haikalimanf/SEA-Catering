@@ -21,7 +21,6 @@ import com.example.seacatering.ui.user.review.ReviewActivity
 import com.example.seacatering.ui.user.review.ReviewViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {

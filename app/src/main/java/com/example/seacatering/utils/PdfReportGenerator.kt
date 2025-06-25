@@ -45,7 +45,7 @@ object PdfReportGenerator {
             color = Color.DKGRAY
         }
 
-        canvas.drawText("Laporan Statistik Subscription", 40f, 60f, paintTitle)
+        canvas.drawText("Subscription Statistics Report", 40f, 60f, paintTitle)
 
         val dateFormatter = SimpleDateFormat("dd MMM yyyy", Locale("id", "ID"))
         val startDateText = startDate?.toDate()?.let { dateFormatter.format(it) } ?: "-"
@@ -53,23 +53,23 @@ object PdfReportGenerator {
 
         var y = 100f
         val spacing = 30f
-        canvas.drawText("Periode: $startDateText - $endDateText", 40f, y, paintBody)
+        canvas.drawText("Period: $startDateText - $endDateText", 40f, y, paintBody)
 
         y += spacing
-        canvas.drawText("Langganan Baru: ${data?.newSubscriptions}", 40f, y, paintBody)
+        canvas.drawText("New Subscription: ${data?.newSubscriptions}", 40f, y, paintBody)
 
         y += spacing
-        canvas.drawText("Pendapatan (MRR): ${formatRupiah(data?.recurringRevenue)}", 40f, y, paintBody)
+        canvas.drawText("Revenue (MRR): ${formatRupiah(data?.recurringRevenue)}", 40f, y, paintBody)
 
         y += spacing
-        canvas.drawText("Reaktivasi: ${data?.reactivations}", 40f, y, paintBody)
+        canvas.drawText("Reactivation: ${data?.reactivations}", 40f, y, paintBody)
 
         y += spacing
-        canvas.drawText("Langganan Aktif: ${data?.subscriptionActive}", 40f, y, paintBody)
+        canvas.drawText("Active Subscription: ${data?.subscriptionActive}", 40f, y, paintBody)
 
         pdfDocument.finishPage(page)
 
-        val fileName = "Laporan_Subscription_${startDateText}_sampai_${endDateText}.pdf"
+        val fileName = "Report_Subscription_${startDateText}_to_${endDateText}.pdf"
         val file = File(docsFolder, fileName)
 
         return try {
@@ -96,7 +96,7 @@ object PdfReportGenerator {
         try {
             context.startActivity(intent)
         } catch (e: ActivityNotFoundException) {
-            Toast.makeText(context, "Tidak ada aplikasi pembaca PDF", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "No PDF reader application", Toast.LENGTH_LONG).show()
         }
     }
 }

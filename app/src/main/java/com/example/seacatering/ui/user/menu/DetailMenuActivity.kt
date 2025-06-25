@@ -1,14 +1,9 @@
 package com.example.seacatering.ui.user.menu
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
 import com.example.seacatering.R
-import com.example.seacatering.databinding.ActivityContactUsBinding
-import com.example.seacatering.databinding.ActivityDashboardBinding
 import com.example.seacatering.databinding.ActivityDetailMenuBinding
 import com.example.seacatering.model.DataMealPlan
 import dagger.hilt.android.AndroidEntryPoint

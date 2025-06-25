@@ -16,8 +16,8 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.seacatering.R
 import com.example.seacatering.databinding.ActivityRegisterBinding
-import com.example.seacatering.ui.auth.login.LoginActivity
 import com.example.seacatering.model.state.AuthState
+import com.example.seacatering.ui.auth.login.LoginActivity
 import com.example.seacatering.utils.Validator.isValidPassword
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -45,15 +45,15 @@ class RegisterActivity : AppCompatActivity() {
 
             when {
                 username.isEmpty() || email.isEmpty() || password.isEmpty() -> {
-                    Toast.makeText(this, "Semua field harus diisi.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "All fields must be filled in.", Toast.LENGTH_SHORT).show()
                 }
 
                 !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
-                    Toast.makeText(this, "Format email tidak valid.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Invalid email format.", Toast.LENGTH_SHORT).show()
                 }
 
                 !isValidPassword(password) -> {
-                    Toast.makeText(this, "Password minimal 8 karakter, harus ada huruf besar, kecil, angka, dan simbol.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Passwords must be at least 8 characters long and must contain uppercase letters, lowercase letters, numbers, and symbols.", Toast.LENGTH_SHORT).show()
                 }
 
                 else -> {

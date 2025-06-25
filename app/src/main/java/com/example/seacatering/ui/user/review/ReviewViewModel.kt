@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.seacatering.model.DataAdvantages
 import com.example.seacatering.model.DataTestimonial
 import com.example.seacatering.repository.AuthRepository
 import com.example.seacatering.repository.CateringRepository

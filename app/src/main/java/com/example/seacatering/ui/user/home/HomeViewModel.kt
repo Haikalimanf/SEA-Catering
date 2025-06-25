@@ -1,11 +1,8 @@
 package com.example.seacatering.ui.user.home
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.seacatering.model.DataAdvantages
-import com.example.seacatering.model.DataMealPlan
 import com.example.seacatering.repository.CateringRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

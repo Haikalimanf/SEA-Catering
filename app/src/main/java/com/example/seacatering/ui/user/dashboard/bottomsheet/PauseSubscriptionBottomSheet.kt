@@ -1,7 +1,6 @@
 package com.example.seacatering.ui.user.dashboard.bottomsheet
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -68,7 +67,6 @@ class PauseSubscriptionBottomSheet : BottomSheetDialogFragment() {
             }
             val subscriptionId = dashboardViewModel.subscriptionData.value?.id
 
-            Log.d("Tanggal", "subscriptionId: $subscriptionId")
             if (subscriptionId != null) {
                 dashboardViewModel.pauseUserSubscription(
                     subscriptionId,
@@ -86,8 +84,6 @@ class PauseSubscriptionBottomSheet : BottomSheetDialogFragment() {
             DateTimePickerUtil.showDateRangePicker(requireContext()) { startDate, endDate ->
                 selectedStartDate = startDate
                 selectedEndDate = endDate
-                Log.d("Tanggal", "selectedStartDate: $selectedStartDate")
-                Log.d("Tanggal", "selectedEndDate: $selectedEndDate")
                 binding.tvSelectedDate.text = "$startDate to $endDate"
                 binding.tvSelectedDate.setTextColor(resources.getColor(R.color.black, null))
             }

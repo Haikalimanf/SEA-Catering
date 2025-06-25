@@ -4,10 +4,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.seacatering.model.DataUser
 import com.example.seacatering.model.enums.UserRole
+import com.example.seacatering.model.state.AuthState
 import com.example.seacatering.repository.AuthRepository
 import com.example.seacatering.repository.CateringRepository
 import com.example.seacatering.utils.AuthExceptionMapper
-import com.example.seacatering.model.state.AuthState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

@@ -1,13 +1,9 @@
 package com.example.seacatering.ui.user.home
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.seacatering.R
 import com.example.seacatering.databinding.ActivityDetailHomeBinding
-import com.example.seacatering.databinding.ActivityDetailMenuBinding
 
 class DetailHomeActivity : AppCompatActivity() {
 

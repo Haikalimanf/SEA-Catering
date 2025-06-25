@@ -1,6 +1,5 @@
 package com.example.seacatering.ui.admin.dashboard
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.seacatering.model.DataAnalyticsResult
@@ -23,7 +22,6 @@ class AdminDashboardViewModel @Inject constructor(
     fun fetchDashboardAnalytics(start: Timestamp, end: Timestamp) {
         viewModelScope.launch {
             val result = adminDashboardRepository.getDashboardAnalytics(start, end)
-            Log.d("fetchDashboardAnalytics", "fetchDashboardAnalytics: $result")
             if (result.isSuccess) {
                 _dataAnalytics.value = result.getOrNull()
             } else {

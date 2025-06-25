@@ -7,10 +7,10 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException
 object AuthExceptionMapper {
     fun mapAuthException(e: Exception): String {
         return when (e) {
-            is FirebaseAuthInvalidCredentialsException -> "Password salah."
-            is FirebaseAuthInvalidUserException -> "Akun tidak ditemukan."
-            is FirebaseAuthUserCollisionException -> "Email sudah digunakan."
-            else -> "Terjadi kesalahan: ${e.localizedMessage}"
+            is FirebaseAuthInvalidCredentialsException -> "Incorrect password."
+            is FirebaseAuthInvalidUserException -> "Account not found."
+            is FirebaseAuthUserCollisionException -> "Email already in use."
+            else -> "An error occurred: ${e.localizedMessage}"
         }
     }
 }

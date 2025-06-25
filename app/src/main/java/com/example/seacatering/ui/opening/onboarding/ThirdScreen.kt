@@ -2,15 +2,13 @@ package com.example.seacatering.ui.opening.onboarding
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import com.example.seacatering.R
 import com.example.seacatering.databinding.FragmentThirdScreenBinding
 import com.example.seacatering.model.local.OnboardingPreferences
-import com.example.seacatering.ui.MainActivity
 import com.example.seacatering.ui.auth.login.LoginActivity
 import kotlinx.coroutines.launch
 

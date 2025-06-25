@@ -2,7 +2,6 @@ package com.example.seacatering.ui.user.dashboard
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.seacatering.model.DataCheckout
 import com.example.seacatering.model.DataSubscription
 import com.example.seacatering.model.enums.SubscriptionStatus
 import com.example.seacatering.repository.AuthRepository
