@@ -69,7 +69,6 @@ class SplashScreenFragment : Fragment() {
                         activity?.finish()
                     }
                     is RoleResultState.Success -> {
-                        Log.d("role user", "observeRoleState: ${state.role}")
                         val intent = when (state.role) {
                             UserRole.ADMIN -> Intent(requireContext(), DashboardAdminActivity::class.java)
                             UserRole.USER -> Intent(requireContext(), MainActivity::class.java)

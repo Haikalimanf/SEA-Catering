@@ -1,5 +1,6 @@
 package com.example.seacatering.repository
 
+import android.util.Log
 import com.example.seacatering.model.DataAdvantages
 import com.example.seacatering.model.DataCheckout
 import com.example.seacatering.model.DataMealPlan
@@ -110,8 +111,11 @@ class CateringRepository @Inject constructor(
         return try {
             val snapshot = firestore.collection("subscriptions")
                 .whereEqualTo("userId", userId)
+                .whereIn("status", listOf("ACTIVE", "PAUSED"))
                 .get()
                 .await()
+
+            Log.d("FirestoreDebug", "Raw snapshot: ${snapshot.documents.map { it.data }}")
 
             val subscriptions = snapshot.toObjects(DataSubscription::class.java)
             Result.success(subscriptions)
@@ -132,17 +136,18 @@ class CateringRepository @Inject constructor(
 
     suspend fun pauseSubscription(
         subscriptionId: String,
-        pauseStart: String,
-        pauseEnd: String
+        pauseStart: Timestamp,
+        pauseEnd: Timestamp
     ): Result<Void?> {
         return try {
-            val subscriptionRef = firestore.collection("subscriptions").document(subscriptionId)
-            subscriptionRef.update(
-                mapOf(
-                    "status" to SubscriptionStatus.PAUSED.name,
-                    "pause_periode_start" to pauseStart,
-                    "pause_periode_end" to pauseEnd
-                )
+            val subscriptionRef = firestore.collection("subscriptions")
+                .document(subscriptionId)
+                subscriptionRef.update(
+                    mapOf(
+                        "status" to SubscriptionStatus.PAUSED.name,
+                        "pause_periode_start" to pauseStart,
+                        "pause_periode_end" to pauseEnd
+                    )
             ).await()
             Result.success(null)
         } catch (e: Exception) {

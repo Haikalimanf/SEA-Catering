@@ -6,10 +6,13 @@ import com.example.seacatering.model.DataSubscription
 import com.example.seacatering.model.enums.SubscriptionStatus
 import com.example.seacatering.repository.AuthRepository
 import com.example.seacatering.repository.CateringRepository
+import com.google.firebase.Timestamp
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel
@@ -32,11 +35,12 @@ class DashboardViewModel @Inject constructor(
         val userId = authRepository.getCurrentUserId() ?: return
         viewModelScope.launch {
             val result = cateringRepository.getUserSubscriptions(userId)
+
             if (result.isSuccess) {
                 val subscriptions = result.getOrNull().orEmpty()
                 val latestActiveOrPaused = subscriptions
                     .filter { it.status == SubscriptionStatus.ACTIVE || it.status == SubscriptionStatus.PAUSED }
-                    .maxByOrNull { it.end_date }
+                    .maxByOrNull { it.end_date.toDate().time }
 
                 _subcriptionData.value = latestActiveOrPaused
             }
@@ -55,8 +59,10 @@ class DashboardViewModel @Inject constructor(
 
     fun pauseUserSubscription(subscriptionId: String, start: String, end: String) {
         viewModelScope.launch {
-            val result = cateringRepository.pauseSubscription(subscriptionId, start, end)
-            _subscriptionStatus.value = result
+            val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+            val startTs = Timestamp(sdf.parse(start)!!)
+            val endTs   = Timestamp(sdf.parse(end)!!)
+            val result  = cateringRepository.pauseSubscription(subscriptionId, startTs, endTs)
             if (result.isSuccess) fetchUserSubscription()
         }
     }

@@ -1,5 +1,6 @@
 package com.example.seacatering.ui.opening
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.seacatering.model.state.RoleResultState
@@ -27,10 +28,13 @@ class SplashViewModel @Inject constructor(
             return
         }
 
+        Log.d("checkUserRole", "checkUserRole: $userId")
+
         viewModelScope.launch {
             val result = cateringRepository.getUserById(userId)
             if (result.isSuccess) {
                 val role = result.getOrNull()?.role
+                Log.d("checkUserRole", "checkUserRole: $role")
                 if (role != null) {
                     _roleState.value = RoleResultState.Success(role)
                 } else {
