@@ -96,7 +96,7 @@ cd SEA-Catering
 5. Selesaikan setup dan jalankan emulator
 
 ### Download App
-- Link Drive Download App
+- [Link Drive Download App](https://github.com/Haikalimanf/SEA-Catering/releases/tag/v1.0)
 
 ### 🔐 Admin & User Login Credentials
 #### 👤 Akun Pengguna Biasa
