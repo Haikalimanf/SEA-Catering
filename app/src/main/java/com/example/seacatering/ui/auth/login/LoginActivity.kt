@@ -40,6 +40,15 @@ class LoginActivity : AppCompatActivity() {
         observeLoginState()
         observeRoleState()
         btnLogin()
+        btnLoginWithGoogle()
+    }
+
+    private fun btnLoginWithGoogle() {
+        binding.btnLoginWithGoogle.setOnClickListener {
+            binding.progressBar.visibility = View.VISIBLE
+
+            viewModel.signInWithGoogle(this)
+        }
     }
 
     private fun btnLogin() {

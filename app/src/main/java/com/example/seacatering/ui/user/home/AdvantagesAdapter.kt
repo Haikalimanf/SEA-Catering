@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.seacatering.R
 import com.example.seacatering.databinding.ItemHomeBinding
 import com.example.seacatering.model.DataAdvantages
 
@@ -18,6 +19,7 @@ class AdvantagesAdapter : ListAdapter<DataAdvantages, AdvantagesAdapter.Advantag
             binding.tvDescMenu.text = item.shortDescription
             Glide.with(binding.root.context)
                 .load(item.imageUri)
+                .placeholder(R.drawable.placeholder_image)
                 .into(binding.imgDietPlan)
         }
     }

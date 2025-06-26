@@ -53,13 +53,22 @@ class RegisterActivity : AppCompatActivity() {
                 }
 
                 !isValidPassword(password) -> {
-                    Toast.makeText(this, "Passwords must be at least 8 characters long and must contain uppercase letters, lowercase letters, numbers, and symbols.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Password must be at least 8 characters. include uppercase, lowercase, numbers, and symbols.", Toast.LENGTH_SHORT).show()
                 }
 
                 else -> {
                     viewModel.registerAndSaveUser(email, password, username)
                 }
             }
+        }
+    }
+
+    private fun btnLoginWithGoogle() {
+        binding.btnLoginWithGoogle.setOnClickListener {
+            binding.progressBar.visibility = View.VISIBLE
+            binding.btnLoginWithGoogle.isEnabled = false
+
+            viewModel.signInWithGoogle(this)
         }
     }
 

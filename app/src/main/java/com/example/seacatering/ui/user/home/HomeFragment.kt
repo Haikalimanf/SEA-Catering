@@ -72,6 +72,7 @@ class HomeFragment : Fragment() {
         val imageUrl = getString(R.string.banner_image_home)
         Glide.with(this)
             .load(imageUrl)
+            .placeholder(R.drawable.placeholder_image)
             .into(binding.imgDietPlan)
     }
 

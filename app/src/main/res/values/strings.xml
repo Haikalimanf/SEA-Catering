@@ -45,6 +45,7 @@
     <string name="facebook_logo">Facebook Logo</string>
     <string name="google_logo">Google Logo</string>
     <string name="apple_logo">Apple logo</string>
+    <string name="default_web_client_id">78488129789-i51g88adf55omefon0jtk67jr3r84l67.apps.googleusercontent.com</string>
     <string name="logo_sea_catering">Logo Sea Catering</string>
 
 
@@ -154,7 +155,6 @@
     <string name="allergies">Allergies</string>
     <string name="plan_selection">Plan Selection</string>
     <string name="your_subscription_plan">Your Subscription Plan</string>
-
 
     // Image Uri
     <string name="profile_image_default">https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/default_avatar_man.jpg</string>

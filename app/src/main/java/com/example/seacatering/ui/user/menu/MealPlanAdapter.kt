@@ -6,8 +6,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.seacatering.R
 import com.example.seacatering.databinding.ItemMenuMealBinding
 import com.example.seacatering.model.DataMealPlan
+import com.example.seacatering.utils.FormatRupiah.formatRupiah
 
 class MealPlanAdapter(
     private val onViewDetailClick: (DataMealPlan) -> Unit
@@ -18,8 +20,11 @@ class MealPlanAdapter(
         fun bind(item: DataMealPlan) {
             binding.tvTitle.text = item.name
             binding.tvDescription.text = item.shortDescription
-            binding.tvPrice.text = "Rp${item.price}/Meal"
-            Glide.with(binding.root).load(item.imageUri).into(binding.imgDietPlan)
+            binding.tvPrice.text = formatRupiah(item.price)
+            Glide.with(binding.root)
+                .load(item.imageUri)
+                .placeholder(R.drawable.placeholder_image)
+                .into(binding.imgDietPlan)
 
             binding.btnViewDetails.setOnClickListener {
                 onViewDetailClick(item)

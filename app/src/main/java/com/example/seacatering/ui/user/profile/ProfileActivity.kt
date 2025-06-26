@@ -101,6 +101,7 @@ class ProfileActivity : AppCompatActivity() {
                     lifecycleScope.launch {
                         viewModel.logout()
                         Toast.makeText(this@ProfileActivity, "Logout", Toast.LENGTH_SHORT).show()
+                        finish()
                     }
                 }
                 .setNegativeButton("No", null)
@@ -129,6 +130,7 @@ class ProfileActivity : AppCompatActivity() {
                 selectedImageUri = safeUri
                 Glide.with(this)
                     .load(safeUri)
+                    .placeholder(R.drawable.placeholder_image)
                     .circleCrop()
                     .into(binding.imgProfile)
             }

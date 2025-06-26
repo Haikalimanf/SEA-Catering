@@ -12,7 +12,20 @@
           "package_name": "com.example.seacatering"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "78488129789-p53fmdpb09384nt96a5mblf625oif30d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.seacatering",
+            "certificate_hash": "45741769d79cd5515dee4d61d35a8ce68c443ca8"
+          }
+        },
+        {
+          "client_id": "78488129789-i51g88adf55omefon0jtk67jr3r84l67.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCC42kklWat31gVTp8X3xNvL1nCMEwaLbk"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "78488129789-i51g88adf55omefon0jtk67jr3r84l67.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

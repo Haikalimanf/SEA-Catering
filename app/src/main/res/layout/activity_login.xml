@@ -123,14 +123,13 @@
     </LinearLayout>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/materialCardView"
-        android:layout_width="120dp"
+        android:id="@+id/btn_login_with_google"
+        android:layout_width="match_parent"
         android:layout_height="49dp"
         android:layout_gravity="center"
-        android:layout_margin="8dp"
+        android:layout_marginTop="10dp"
         android:layout_weight="1"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="4dp"
+        app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
@@ -159,7 +158,7 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_login_with_google" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

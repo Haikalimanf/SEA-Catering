@@ -1,5 +1,6 @@
 package com.example.seacatering.ui.auth.register
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.seacatering.model.DataUser
@@ -44,5 +45,21 @@ class RegisterViewModel @Inject constructor(
             }
         }
     }
+
+    fun signInWithGoogle(context: Context) {
+        _registerState.value = AuthState.Loading
+        viewModelScope.launch {
+            val result = authRepository.loginWithGoogle(context)
+            if (result.isSuccess) {
+                val outcome = result.getOrNull()!!
+                _registerState.value = AuthState.Success(outcome)
+            } else {
+                val error = result.exceptionOrNull() as? Exception
+                val message = AuthExceptionMapper.mapAuthException(error ?: Exception("Unknown error"))
+                _registerState.value = AuthState.Error(message)
+            }
+        }
+    }
+
 
 }

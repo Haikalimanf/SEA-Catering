@@ -1,5 +1,7 @@
 package com.example.seacatering.ui.auth.login
 
+import android.content.Context
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.seacatering.repository.AuthRepository
@@ -49,4 +51,21 @@ class LoginViewModel @Inject constructor(
             }
         }
     }
+
+    fun signInWithGoogle(context: Context) {
+        _loginState.value = AuthState.Loading
+        viewModelScope.launch {
+            val result = authRepository.loginWithGoogle(context)
+            if (result.isSuccess) {
+                val outcome = result.getOrNull()!!
+                _loginState.value = AuthState.Success(outcome)
+            } else {
+                val error = result.exceptionOrNull() as? Exception
+                val message = AuthExceptionMapper.mapAuthException(error ?: Exception("Unknown error"))
+                Log.d("signInWithGoogle", "signInWithGoogle: $message")
+                _loginState.value = AuthState.Error(message)
+            }
+        }
+    }
+
 }
