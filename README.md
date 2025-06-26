@@ -37,23 +37,24 @@ Antarmuka intuitif untuk menjelajahi paket katering.
 #### 📝 Add Testimonial  
 Memberikan ulasan dan rating terhadap layanan.
 
-![](https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/add_review_sea_catering.jpg)
+<img src="https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/add_review_sea_catering.jpg" width="300">
 
-#### 📆 User Can Subscription  
+#### 📆 User Can Subscribe  
+Form untuk memilih paket, hari pengiriman, dan data pribadi pengguna.
 
-![](https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/subcription_sea_catering.jpg)
+<img src="https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/subcription_sea_catering.jpg" width="300">
 
-#### 📆 User Dashboard to View, Pause, and Cancel Subscription  
-Fleksibilitas dalam mengelola langganan.
+#### 📆 View, Pause & Cancel Subscription  
+Fleksibilitas dalam mengelola langganan aktif langsung dari dashboard.
 
-![](https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/dashboard_user_have_subs_sea_catering.jpg)
+<img src="https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/dashboard_user_have_subs_sea_catering.jpg" width="300">
 
 ### 🛠️ Admin
 
 #### 📊 Admin Dashboard  
 Melihat statistik seperti new subscriptions, MRR, growth, dan reaktivasi.
 
-![](https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/admin_dashboard_sea_catering.jpg)
+<img src="https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/admin_dashboard_sea_catering.jpg" width="300">
 
 #### 📄 Generate Report PDF  
 Fitur untuk membuat laporan bulanan dalam format PDF.
