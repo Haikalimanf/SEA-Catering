@@ -124,12 +124,14 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView"
-        android:layout_width="92dp"
+        android:layout_width="120dp"
         android:layout_height="49dp"
+        android:layout_gravity="center"
         android:layout_margin="8dp"
         android:layout_weight="1"
         app:cardCornerRadius="16dp"
         app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:strokeColor="#DDDDDD"
@@ -142,59 +144,22 @@
             android:src="@drawable/icon_google" />
     </com.google.android.material.card.MaterialCardView>
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/materialCardView2"
-        android:layout_width="92dp"
-        android:layout_height="49dp"
-        android:layout_margin="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_weight="1"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="4dp"
-        app:layout_constraintEnd_toStartOf="@+id/materialCardView3"
-        app:layout_constraintStart_toEndOf="@+id/materialCardView"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/icon_facebook" />
-    </com.google.android.material.card.MaterialCardView>
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/materialCardView3"
-        android:layout_width="92dp"
-        android:layout_height="49dp"
-        android:layout_margin="8dp"
-        android:layout_weight="1"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/icon_twitter" />
-    </com.google.android.material.card.MaterialCardView>
 
     <TextView
         android:id="@+id/tvSignUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:fontFamily="@font/poppins"
-        android:gravity="center"
-        android:textColor="@color/gray"
-        android:textSize="14sp"
         android:clickable="true"
         android:focusable="true"
+        android:fontFamily="@font/poppins"
+        android:gravity="center"
         android:text="@string/don_t_have_an_account_sign_up"
+        android:textColor="@color/gray"
+        android:layout_marginTop="30dp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialCardView2" />
+        app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.example.seacatering.R
 import com.example.seacatering.model.enums.UserRole
@@ -42,7 +43,13 @@ class SplashScreenFragment : Fragment() {
 
             val isOnboardingDone = OnboardingPreferences.isOnboardingCompleted(requireContext())
             if (!isOnboardingDone) {
-                findNavController().navigate(R.id.action_splashScreenFragment_to_viewPagerFragment)
+                findNavController().navigate(
+                    R.id.action_splashScreenFragment_to_viewPagerFragment,
+                    null,
+                    NavOptions.Builder()
+                        .setPopUpTo(R.id.splashScreenFragment, true)
+                        .build()
+                )
                 return@launch
             }
 
