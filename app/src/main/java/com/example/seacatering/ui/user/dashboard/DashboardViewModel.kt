@@ -63,7 +63,10 @@ class DashboardViewModel @Inject constructor(
             val startTs = Timestamp(sdf.parse(start)!!)
             val endTs   = Timestamp(sdf.parse(end)!!)
             val result  = cateringRepository.pauseSubscription(subscriptionId, startTs, endTs)
-            if (result.isSuccess) fetchUserSubscription()
+            if (result.isSuccess) {
+                _subscriptionStatus.value = result
+                fetchUserSubscription()
+            }
         }
     }
 

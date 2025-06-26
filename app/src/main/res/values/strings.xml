@@ -122,7 +122,7 @@
     // Review
     <string name="title_page_review">Share your experience with us!</string>
     <string name="desc_page_review">Your feedback helps us to improve our service.</string>
-    <string name="rating_4_5">Rating (4/5)</string>
+    <string name="rating">Rating</string>
     <string name="hint_review">Share your experience in here!</string>
     <string name="post">Post</string>
     <string name="cancel">Cancel</string>
