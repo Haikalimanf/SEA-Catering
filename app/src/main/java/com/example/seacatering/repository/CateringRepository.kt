@@ -137,23 +137,23 @@ class CateringRepository @Inject constructor(
     suspend fun pauseSubscription(
         subscriptionId: String,
         pauseStart: Timestamp,
-        pauseEnd: Timestamp
+        pauseEnd:   Timestamp
     ): Result<Void?> {
         return try {
-            val subscriptionRef = firestore.collection("subscriptions")
+            firestore.collection("subscriptions")
                 .document(subscriptionId)
-                subscriptionRef.update(
-                    mapOf(
-                        "status" to SubscriptionStatus.PAUSED.name,
-                        "pause_periode_start" to pauseStart,
-                        "pause_periode_end" to pauseEnd
-                    )
-            ).await()
+                .update(
+                    "status",SubscriptionStatus.PAUSED.name,
+                    "pause_periode_start",pauseStart,
+                    "pause_periode_end",pauseEnd
+                )
+                .await()
             Result.success(null)
-        } catch (e: Exception) {
+        } catch(e: Exception) {
             Result.failure(e)
         }
     }
+
 
     suspend fun getUserCheckout(userId: String): Result<List<DataCheckout>> {
         return try {
@@ -197,7 +197,5 @@ class CateringRepository @Inject constructor(
 
         return !hasActiveOrPaused
     }
-
-
 
 }
