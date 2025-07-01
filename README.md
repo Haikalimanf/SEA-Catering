@@ -71,6 +71,7 @@ Fitur untuk membuat laporan bulanan dalam format PDF.
 - **Navigasi**: Jetpack Navigation
 - **Authentication & Database**: Firebase Auth & Firestore
 - **Dependency Injection**: Dagger Hilt
+- **Payment Method**: Payment with Google Pay
 - **Arsitektur**: MVVM (Model-View-ViewModel)
 
 ## Installation & Getting Started
