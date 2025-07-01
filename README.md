@@ -39,10 +39,15 @@ Memberikan ulasan dan rating terhadap layanan.
 
 <img src="https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/add_review_sea_catering.jpg" width="300">
 
-#### 📆 User Can Subscribe  
+#### 📆 User Can Subscribe
 Form untuk memilih paket, hari pengiriman, dan data pribadi pengguna.
 
 <img src="https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/subcription_sea_catering.jpg" width="300">
+
+#### 💳 Payment with Google Pay  
+Tampilan checkout yang mengintegrasikan Google Pay untuk memproses pembayaran langganan secara instan dan aman.
+
+<img src="https://github.com/user-attachments/assets/6f395bf2-0393-4922-b5c7-04e9e1d2157b" width="300">
 
 #### 📆 View, Pause & Cancel Subscription  
 Fleksibilitas dalam mengelola langganan aktif langsung dari dashboard.
