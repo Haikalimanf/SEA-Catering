@@ -118,6 +118,7 @@
     <string name="hint_allergies">I’m allergies with…</string>
     <string name="note_fields_marked">Note: Fields marked with (*) If you not have allergies</string>
     <string name="note_fields_password">Password must be at least 8 characters. include uppercase, lowercase, numbers, and symbols.</string>
+    <string name="note_fields_password_isEmpty">Please enter your password</string>
     <string name="subcribe_now">Subcribe Now</string>
 
     // Review

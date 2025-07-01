@@ -125,23 +125,24 @@
                     android:autofillHints="password" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <TextView
+                android:id="@+id/passwordError"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/red"
+                android:textSize="12sp"
+                android:visibility="gone"
+                />
+
             <Button
                 android:id="@+id/btn_signUp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="12dp"
                 android:background="@drawable/button_rounded"
                 android:backgroundTint="@color/green"
                 android:text="@string/sign_up" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins"
-                android:text="@string/note_fields_password"
-                android:textColor="@color/gray"
-                android:textSize="12sp"
-            />
 
             <TextView
                 android:layout_width="match_parent"

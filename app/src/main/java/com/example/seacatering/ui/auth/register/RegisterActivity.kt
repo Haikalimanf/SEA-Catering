@@ -41,28 +41,62 @@ class RegisterActivity : AppCompatActivity() {
         btnLoginWithGoogle()
     }
 
+    private fun validateInputs(): Boolean {
+        val usernameValid = isUsernameValid()
+        val emailValid = isEmailValid()
+        val passwordValid = isPasswordValid()
+
+        return usernameValid && emailValid && passwordValid
+    }
+
+
     private fun btnSignUp() {
         binding.btnSignUp.setOnClickListener {
-            val username = binding.edtUsername.text.toString()
-            val email = binding.edtEmail.text.toString()
-            val password = binding.edtPassword.text.toString()
+            if (validateInputs()) {
+                val username = binding.edtUsername.text.toString().trim()
+                val email = binding.edtEmail.text.toString().trim()
+                val password = binding.edtPassword.text.toString().trim()
 
-            when {
-                username.isEmpty() || email.isEmpty() || password.isEmpty() -> {
-                    Toast.makeText(this, "All fields must be filled in.", Toast.LENGTH_SHORT).show()
-                }
+                viewModel.registerAndSaveUser(email, password, username)
+            }
+        }
+    }
 
-                !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
-                    Toast.makeText(this, "Invalid email format.", Toast.LENGTH_SHORT).show()
-                }
+    private fun isUsernameValid(): Boolean {
+        val username = binding.edtUsername.text.toString().trim()
+        return if (username.isEmpty()) {
+            binding.edtUsername.error = "Please enter your name"
+            false
+        } else true
+    }
 
-                !isValidPassword(password) -> {
-                    Toast.makeText(this, "Password must be at least 8 characters. include uppercase, lowercase, numbers, and symbols.", Toast.LENGTH_SHORT).show()
-                }
+    private fun isEmailValid(): Boolean {
+        val email = binding.edtEmail.text.toString().trim()
+        return if (email.isEmpty()) {
+            binding.edtEmail.error = "Please enter your email"
+            false
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            binding.edtEmail.error = "Invalid email format."
+            false
+        } else true
+    }
 
-                else -> {
-                    viewModel.registerAndSaveUser(email, password, username)
-                }
+    private fun isPasswordValid(): Boolean {
+        val password = binding.edtPassword.text.toString().trim()
+        return when {
+            password.isEmpty() -> {
+                binding.passwordError.text = getString(R.string.note_fields_password_isEmpty)
+                binding.passwordError.visibility = View.VISIBLE
+                false
+            }
+            !isValidPassword(password) -> {
+                binding.passwordError.text = getString(R.string.note_fields_password)
+                binding.passwordError.visibility = View.VISIBLE
+                false
+            }
+            else -> {
+                binding.passwordError.visibility = View.GONE
+                true
             }
         }
     }

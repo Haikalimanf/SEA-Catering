@@ -21,6 +21,7 @@ import com.example.seacatering.model.state.RoleResultState
 import com.example.seacatering.ui.MainActivity
 import com.example.seacatering.ui.admin.dashboard.DashboardAdminActivity
 import com.example.seacatering.ui.auth.register.RegisterActivity
+import com.example.seacatering.utils.Validator.isValidPassword
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -58,8 +59,11 @@ class LoginActivity : AppCompatActivity() {
 
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 viewModel.login(email, password)
-            } else {
-                Toast.makeText(this, "Empty Fields Are Not Allowed", Toast.LENGTH_SHORT).show()
+            } else if (email.isEmpty()) {
+                binding.edtEmail.error = "Please enter your email"
+            } else if (password.isEmpty()) {
+                binding.passwordError.text = getString(R.string.note_fields_password_isEmpty)
+                binding.passwordError.visibility = View.VISIBLE
             }
         }
     }
