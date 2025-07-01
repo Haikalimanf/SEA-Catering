@@ -139,7 +139,6 @@ class LoginActivity : AppCompatActivity() {
             override fun onClick(widget: View) {
                 intent = Intent(this@LoginActivity, RegisterActivity::class.java)
                 startActivity(intent)
-                finish()
             }
 
             override fun updateDrawState(ds: TextPaint) {
