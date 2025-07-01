@@ -188,20 +188,34 @@ class CateringRepository @Inject constructor(
         }
     }
 
-    suspend fun getLatestCancelledSubscription(
-        userId: String,
-        currentTime: Timestamp = Timestamp.now()
-    ): DataSubscription? {
-        val result = getUserSubscriptions(userId)
+    suspend fun getUserCancelledSubscriptions(userId: String): Result<List<DataSubscription>> {
+        return try {
+            val snapshot = firestore.collection("subscriptions")
+                .whereEqualTo("userId", userId)
+                .whereEqualTo("status", SubscriptionStatus.CANCELED.name)
+                .get()
+                .await()
+
+            val subscriptions = snapshot.toObjects(DataSubscription::class.java)
+            Result.success(subscriptions)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+
+    suspend fun getLatestCancelledSubscription(userId: String, now: Timestamp = Timestamp.now()): DataSubscription? {
+        val result = getUserCancelledSubscriptions(userId)
         if (!result.isSuccess) return null
 
-        val subscriptions = result.getOrNull().orEmpty()
+        val cancelled = result.getOrNull().orEmpty()
 
-        return subscriptions
-            .filter { it.status == SubscriptionStatus.CANCELED && it.end_date.toDate().after(currentTime.toDate()) }
+        return cancelled
+            .filter { it.end_date.toDate().after(now.toDate()) } // end_date > sekarang
             .sortedByDescending { it.end_date }
             .firstOrNull()
     }
+
 
     suspend fun canUserSubscribe(userId: String): Boolean {
         val result = getUserSubscriptions(userId)

@@ -37,11 +37,12 @@ class SubscriptionViewModel @Inject constructor(
                 userId = userId
             )
 
-            if (previousCancelled != null && now < previousCancelled.end_date) {
+            if (previousCancelled != null) {
                 newSubscription = newSubscription.copy(
                     reactivated_at = now,
                 )
             }
+
 
             val result = cateringRepository.saveSubscription(newSubscription)
             if (result.isSuccess) {

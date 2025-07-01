@@ -45,7 +45,6 @@ class CheckoutActivity : AppCompatActivity() {
         }
     }
 
-
     private fun setupUI() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = getString(R.string.checkout)
