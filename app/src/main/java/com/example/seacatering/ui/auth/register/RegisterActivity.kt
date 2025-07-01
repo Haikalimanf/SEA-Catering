@@ -37,7 +37,11 @@ class RegisterActivity : AppCompatActivity() {
 
         setupClickableSignIn()
         observeRegisterState()
+        btnSignUp()
+        btnLoginWithGoogle()
+    }
 
+    private fun btnSignUp() {
         binding.btnSignUp.setOnClickListener {
             val username = binding.edtUsername.text.toString()
             val email = binding.edtEmail.text.toString()
@@ -66,7 +70,6 @@ class RegisterActivity : AppCompatActivity() {
     private fun btnLoginWithGoogle() {
         binding.btnLoginWithGoogle.setOnClickListener {
             binding.progressBar.visibility = View.VISIBLE
-            binding.btnLoginWithGoogle.isEnabled = false
 
             viewModel.signInWithGoogle(this)
         }
