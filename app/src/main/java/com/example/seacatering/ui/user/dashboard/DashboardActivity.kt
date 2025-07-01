@@ -48,7 +48,35 @@ class DashboardActivity : AppCompatActivity() {
         fetchDataUser()
         fetchImageMenu()
         pauseSubscription()
+        activatedSubcription()
         cancelSubscription()
+    }
+
+    private fun activatedSubcription() {
+        binding.btnActivated.setOnClickListener {
+            DialogUtil.showConfirmationDialog(
+                context = this@DashboardActivity,
+                title = "Activated Subscription",
+                message = "Are you sure you want to activated subscription?",
+                onConfirmed = {
+                    val subscriptionId = dashboardViewModel.subscriptionData.value?.id
+                    if (subscriptionId != null) {
+                        dashboardViewModel.activatedUserSubscription(subscriptionId)
+                    }
+                }
+            )
+
+            lifecycleScope.launch {
+                dashboardViewModel.subscriptionStatus.collectLatest { result ->
+                    if (result?.isSuccess == true) {
+                        Toast.makeText(this@DashboardActivity, "Activated Subscription successfully", Toast.LENGTH_SHORT).show()
+                    } else if (result?.isFailure == true) {
+                        Toast.makeText(this@DashboardActivity, "Failed to Activated subscription", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
+
     }
 
     private fun fetchImageMenu() {
@@ -96,6 +124,8 @@ class DashboardActivity : AppCompatActivity() {
                         binding.emptySubscriptionText.visibility = View.GONE
                         binding.txtPackageName.text = data.plan_type_name
                         binding.txtSubscriptionStatus.text = data.status.name
+                        binding.btnActivated.visibility =
+                            if (data.status == SubscriptionStatus.PAUSED) View.VISIBLE else View.GONE
                         binding.txtMealType.text = data.meal_plan.joinToString(", ")
                         binding.txtDeliveryDays.text = data.delivery_days.joinToString(", ")
                         val formattedDate = data.end_date.toDate().let { date ->

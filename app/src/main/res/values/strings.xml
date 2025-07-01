@@ -163,4 +163,5 @@
     <string name="banner_image_home">https://raw.githubusercontent.com/Haikalimanf/AssetFotoIconSalon/refs/heads/main/banner_image_home.png</string>
     <string name="image_plan_menu">Image Plan Menu</string>
     <string name="diet_plan_image">Diet Plan Image</string>
+    <string name="activated">Activated</string>
 </resources>

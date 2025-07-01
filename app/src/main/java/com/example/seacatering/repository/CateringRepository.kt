@@ -9,6 +9,7 @@ import com.example.seacatering.model.DataTestimonial
 import com.example.seacatering.model.DataUser
 import com.example.seacatering.model.enums.SubscriptionStatus
 import com.google.firebase.Timestamp
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
@@ -154,6 +155,24 @@ class CateringRepository @Inject constructor(
         }
     }
 
+    suspend fun activatedSubscription(subscriptionId: String): Result<Void?> {
+        return try {
+            firestore.collection("subscriptions")
+                .document(subscriptionId)
+                .update(
+                    mapOf(
+                        "status" to SubscriptionStatus.ACTIVE.name,
+                        "pause_periode_start" to FieldValue.delete(),
+                        "pause_periode_end" to FieldValue.delete()
+                    )
+                )
+                .await()
+
+            Result.success(null)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
 
     suspend fun getUserCheckout(userId: String): Result<List<DataCheckout>> {
         return try {

@@ -70,4 +70,15 @@ class DashboardViewModel @Inject constructor(
         }
     }
 
+    fun activatedUserSubscription(subscriptionId: String) {
+        viewModelScope.launch {
+            val result = cateringRepository.activatedSubscription(subscriptionId)
+            _subscriptionStatus.value = result
+
+            if (result.isSuccess) {
+                fetchUserSubscription()
+            }
+        }
+    }
+
 }
