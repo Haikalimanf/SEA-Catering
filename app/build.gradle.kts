@@ -85,4 +85,7 @@ dependencies {
     implementation(libs.androidx.credentials.play.services.auth)
     implementation(libs.googleid)
 
+    // Google Payment
+    implementation(libs.play.services.wallet)
+
 }

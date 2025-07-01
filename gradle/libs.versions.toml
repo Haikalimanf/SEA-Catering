@@ -19,6 +19,7 @@ navigationUiKtx = "2.9.0"
 glide = "4.16.0"
 hiltAndroid = "2.56.2"
 kotlinxCoroutinesAndroid = "1.10.1"
+playServicesWallet = "18.0.0"
 roomRuntime = "2.7.1"
 activity = "1.10.1"
 lottie = "6.6.6"
@@ -54,6 +55,7 @@ androidx-activity = { group = "androidx.activity", name = "activity", version.re
 lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
 firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
+play-services-wallet = { module = "com.google.android.gms:play-services-wallet", version.ref = "playServicesWallet" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
